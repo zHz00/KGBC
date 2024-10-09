@@ -58,6 +58,8 @@ def show_footer(s):
         hint="F10:Exit|1..8:Select tab|Letters with Ctrl or Alt:Select building"
     if active in [M_RELIGION,M_SPACE,M_TIME,M_TRADE]:
         hint="F10:Exit|1..8:Select tab|Letters:Select building"
+    if active==M_HIDDEN_TEST:
+        hint="F10:Exit|Space:Next page"
     s.move(24,0)
     key=True
     for ch in hint:
@@ -86,3 +88,6 @@ def gen_coord(col,row):
     x=5+col*(BUTTON_LEN+1)
     y=row+3
     return (y,x)
+
+if __name__=="__main__":
+    print("Not main module! ("+__file__+")")

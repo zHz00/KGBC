@@ -2,24 +2,21 @@ import sqlite3 as sl
 import curses as c
 import curses.textpad
 import ast
-import json
 
 import table
-import discounts
 from constants import *
-import pure_math
 import buildings as bs
-import utils
+import tests
+
 import tabs
-import workshop
-import religion
 import bonfire
+import workshop
+import trade
+import religion
 import space
 import time_void
-import trade
 
 
-import tests
 
 s = None
 keys=""
@@ -69,7 +66,7 @@ def react_key(s,mode,ch):
         x_mouse=m[1]
         y_mouse=m[2]
         if m[4]&c.BUTTON1_PRESSED:
-            if y_mouse==0 and tabs.active!=M_TABLE:
+            if y_mouse==0 and (tabs.active not in [M_TABLE,M_HIDDEN_TEST]):
                 tab_idx=(x_mouse+1)//TAB_LEN
                 if tab_idx < len(tabs.modes):
                     return tabs.modes[tab_idx]
@@ -83,8 +80,6 @@ def react_key(s,mode,ch):
         return M_HIDDEN_TEST
     if mode==M_BONFIRE:
         return bonfire.react(s,ch,m)
-    if mode==M_HIDDEN_TEST:
-        return M_BONFIRE
     if mode==M_SPACE:
         return space.react(s,ch,m)
     if mode==M_TIME:
@@ -97,6 +92,8 @@ def react_key(s,mode,ch):
         return table.react(s,ch,m)
     if mode==M_WORKSHOP:
         return workshop.react(s,ch,m)
+    if mode==M_HIDDEN_TEST:
+        return tests.react(s,ch,m)
 
     
 
@@ -143,7 +140,8 @@ def main(s):
     tabs.active=M_BONFIRE
 
     while True:
-        tabs.show_header(s)
+        if tabs.active not in [M_TABLE,M_HIDDEN_TEST]:
+            tabs.show_header(s)
         show_page(s,tabs.active)
         tabs.show_footer(s)
         ch=s.getch()

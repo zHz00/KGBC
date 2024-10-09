@@ -45,7 +45,7 @@ def calc_recipe(b,i):
     (recipe,mul,mul_gold,mul_oil)=discounts.base_discount(b)
     ratio=b["Ratio"]+discounts.get_discount(b)
     ratio_oil=1.05
-    ratio_starchart=1.35
+    ratio_starchart=1.35*ratio
     values=[]
     for key,value in recipe.items():
             try:
@@ -74,7 +74,7 @@ def reset_table():
 def show(s,b):
     ratio=b["Ratio"]+discounts.get_discount(b)
     ratio_oil=1.05
-    ratio_starchart=1.35
+    ratio_starchart=1.35*ratio
     (recipe,mul,mul_gold,mul_oil)=discounts.base_discount(b)
     name="=== "+b["Name"]+" ==="
     space=" "*int((80-len(name))/2)
@@ -85,7 +85,7 @@ def show(s,b):
     if discounts.using_oil_ratio(b):
         ratio_info+=f" ({ratio_oil} for oil)"
     if discounts.using_starchart_ratio(b):
-        ratio_info+=f" ({ratio_starchart} for starchart)"
+        ratio_info+=f" ({round(ratio_starchart,3)} for starchart)"
 
     base_discount_info=""
     if mul<1.0:
@@ -231,12 +231,15 @@ def react(s,ch,m):
                 table_sel_e=(y_mouse-3)+table_start
     if letter=="+":
         tests.make_test(bs.b_selected,table_start+table_cursor)
-        utils.show_message("OK")
+        utils.show_message(f"Test added to list. Total: {len(tests.tests_list)}")
     if letter=="S":
-        f=open("kgbc_tests.txt","w",encoding="utf-8")
-        json.dump(tests.tests_list,f)
-        f.close()
-        utils.show_message("SAVED")
+        if len(tests.tests_list)==0:
+            utils.show_message("Tests list is empty! Can't save.")
+        else:
+            f=open("kgbc_tests.txt","w",encoding="utf-8")
+            json.dump(tests.tests_list,f)
+            f.close()
+            utils.show_message(f"Tests list saved. Total tests: {len(tests.tests_list)}")
     if key=="KEY_PPAGE":
         table_start-=20
         if table_start<0:
@@ -275,3 +278,6 @@ def react(s,ch,m):
         table_sel_b=-1
         table_sel_e=-1
     return M_TABLE
+
+if __name__=="__main__":
+    print("Not main module! ("+__file__+")")

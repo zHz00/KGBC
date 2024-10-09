@@ -79,3 +79,6 @@ def react(s,ch,m):
         return M_TABLE
     else:
         return M_TIME
+
+if __name__=="__main__":
+    print("Not main module! ("+__file__+")")

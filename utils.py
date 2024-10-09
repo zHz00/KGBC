@@ -1,11 +1,17 @@
 import curses as c
-def show_message(s):
+def show_message(s,noans=False):
+    W=60
     c.curs_set(0)
-    w=c.newwin(5,60,5,10)
+    w=c.newwin(7,W,10,10)
     w.border()
-    w.addstr(1,1,s)
-    w.addstr(2,15,"<Hit any key to close>")
-    w.getch()
+    begin=int((W-len(s))/2)
+    if begin<0:
+        begin=0
+    w.addstr(1,begin,s)
+    hint="<Hit any key to close>"
+    w.addstr(4,int((W-len(hint))/2),hint)
+    if noans==False:
+        w.getch()
     del w
 
 user_cancel=False#there is no way to distinguish Esc from Enter after curses.TextBox.edit(), so i use global variable
@@ -23,3 +29,6 @@ def edit_keys(key):
             user_cancel=True
             key = 7
     return key
+
+if __name__=="__main__":
+    print("Not main module! ("+__file__+")")

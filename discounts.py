@@ -13,6 +13,7 @@ huts_values=[0,-50,-80,-105,-115]
 huts_idx=0
 
 policies_list=["Liberalism","Fascism","Communism","Big Stick Policy"]
+policies_list_short=["Lib","Fas","Comm","B. Stick"]
 policies_desc=["-20% gold base prices","-50% log house base price","-30% factory base price","-15% embassy base price"]
 policies_active=[0,0,0,0]
 
@@ -89,3 +90,6 @@ def base_discount(b):
             b_reduced["Recipe"][mat]*=mul_oil
         b_reduced["Recipe"][mat]*=mul
     return (b_reduced["Recipe"],mul,mul_gold,mul_oil)
+
+if __name__=="__main__":
+    print("Not main module! ("+__file__+")")

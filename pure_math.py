@@ -57,3 +57,6 @@ def parse_num(s:str)->float:
         else:
             raise ValueError
     return val
+
+if __name__=="__main__":
+    print("Not main module! ("+__file__+")")

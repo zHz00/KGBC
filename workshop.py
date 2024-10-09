@@ -165,3 +165,6 @@ def react(s,ch,m):
     if m!=None and m[4]&c.BUTTON3_PRESSED:
         return tabs.get_tab(bs.b_selected)
     return M_WORKSHOP
+
+if __name__=="__main__":
+    print("Not main module! ("+__file__+")")

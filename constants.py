@@ -55,3 +55,6 @@ BLOCK_3=20
 COL_R_0=2
 COL_R_1=28
 COL_R_2=54
+
+if __name__=="__main__":
+    print("Not main module! ("+__file__+")")
