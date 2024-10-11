@@ -59,7 +59,7 @@ def show_footer(s):
     if active in [M_RELIGION,M_SPACE,M_TIME,M_TRADE]:
         hint="F10:Exit|1..8:Select tab|Letters:Select building"
     if active==M_HIDDEN_TEST:
-        hint="F10:Exit|Space:Next page"
+        hint="F10:Exit|Space:Next page|Esc:Abort"
     s.move(24,0)
     key=True
     for ch in hint:
@@ -85,7 +85,7 @@ def gen_attr(y,x):
         return c.color_pair(ODD_BTN)
 
 def gen_coord(col,row):
-    x=5+col*(BUTTON_LEN+1)
+    x=3+col*(BUTTON_LEN+1)
     y=row+3
     return (y,x)
 

@@ -1,1 +1,1124 @@
-[{"idx": 0, "huts_idx": 0, "active": [0, 1, 0, 1], "philosopher": 0, "monarchy": 0, "bparagon": 0, "elevators": 0, "name": "Catnip Field", "i": 0, "result": [10.0]}, {"idx": 1, "huts_idx": 1, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 0, "elevators": 35, "name": "Satellite", "i": 63, "result": [318886.8454658943, 89381.19798393584, 12755473.818635775, 41455.289910566265]}, {"idx": 1, "huts_idx": 1, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 0, "elevators": 35, "name": "Lunar Outpost", "i": 25, "result": [51324.44207300637, 8500.032203321362, 1700006.440664272, 11050.041864317769, 2550.009660996408, 12750.048304982041]}, {"idx": 1, "huts_idx": 1, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 0, "elevators": 35, "name": "Griffins", "i": 47, "result": [605644.0045015933]}, {"idx": 1, "huts_idx": 1, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 0, "elevators": 35, "name": "Zebras", "i": 25, "result": [699527.7431705293]}, {"idx": 1, "huts_idx": 1, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 0, "elevators": 35, "name": "Sun Altar", "i": 6, "result": [49133.30078124999, 98266.60156249999]}, {"idx": 1, "huts_idx": 1, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 0, "elevators": 35, "name": "Black Obelisk", "i": 1, "result": [114.99999999999999]}, {"idx": 1, "huts_idx": 1, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 0, "elevators": 35, "name": "Sunspire", "i": 24, "result": [35781.470238901755, 21468882.143341053, 715629.4047780351]}, {"idx": 1, "huts_idx": 1, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 0, "elevators": 35, "name": "Temporal Battery", "i": 2, "result": [7.8125]}, {"idx": 1, "huts_idx": 1, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 0, "elevators": 35, "name": "Void Rift", "i": 7, "result": [470.61387750000017]}, {"idx": 1, "huts_idx": 4, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 0, "elevators": 35, "name": "Hut", "i": 53, "result": [30675359.649723962]}, {"idx": 1, "huts_idx": 4, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 0, "elevators": 35, "name": "Log House", "i": 86, "result": [7830999.837160318, 9788749.796450399]}, {"idx": 1, "huts_idx": 4, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 0, "elevators": 35, "name": "Observatory", "i": 107, "result": [7580477.151036806, 10107302.868049076, 353755.6003817176, 505365.14340245374]}, {"idx": 1, "huts_idx": 4, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 0, "elevators": 35, "name": "Sunlifter", "i": 23, "result": [12445728.778748438, 5600.5779504367965, 62228.643893742184]}, {"idx": 1, "huts_idx": 4, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 0, "elevators": 35, "name": "Space Beacon", "i": 21, "result": [941.0759000943999, 470537.95004719996, 470537.95004719996, 141161.38501415998]}, {"idx": 1, "huts_idx": 4, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 0, "elevators": 35, "name": "Chapel", "i": 61, "result": [5918694.544035692, 739836.8180044615, 739836.8180044615]}, {"idx": 5, "huts_idx": 4, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 100000, "elevators": 35, "name": "Observatory", "i": 107, "result": [4623.117526575305, 6164.1567021004075, 215.74548457351426, 308.20783510502037]}, {"idx": 5, "huts_idx": 4, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 100000, "elevators": 35, "name": "Hut", "i": 53, "result": [3497773.309298561]}, {"idx": 5, "huts_idx": 4, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 100000, "elevators": 35, "name": "Log House", "i": 86, "result": [19993.80038544761, 24992.25048180951]}, {"idx": 5, "huts_idx": 4, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 100000, "elevators": 35, "name": "Brewery", "i": 17, "result": [359126.60090355616, 269344.9506776671, 1795.6330045177808, 134672.47533883355]}, {"idx": 5, "huts_idx": 4, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 100000, "elevators": 35, "name": "Templar", "i": 4, "result": [49761.11062933829, 58054.62906756134]}, {"idx": 5, "huts_idx": 4, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 100000, "elevators": 35, "name": "Basilica", "i": 5, "result": [31100.694143336434, 51834.49023889406]}, {"idx": 5, "huts_idx": 4, "active": [0, 1, 0, 1], "philosopher": 1, "monarchy": 1, "bparagon": 100000, "elevators": 35, "name": "Unicorn Utopia", "i": 18, "result": [6187.726802626121, 12375453.605252242, 61877.268026261205]}, {"idx": 5, "huts_idx": 4, "active": [0, 1, 1, 1], "philosopher": 1, "monarchy": 1, "bparagon": 100000, "elevators": 35, "name": "Black Pyramid", "i": 9, "result": [17589.381459599597, 527681.4437879879, 17.589381459599597, 8794.690729799799]}, {"idx": 1, "huts_idx": 4, "active": [0, 1, 1, 1], "philosopher": 1, "monarchy": 1, "bparagon": 100000, "elevators": 35, "name": "Data Center", "i": 21, "result": [1566.7578453914662, 156.6757845391466]},{"idx": 5, "huts_idx": 4, "active": [0, 1, 1, 1], "philosopher": 1, "monarchy": 1, "bparagon": 100000, "elevators": 35, "name": "Spaceport", "i": 3, "result": [12029.949142854566, 601.4974571427283, 1202.9949142854566, 601.4974571427283, 295981.86122350814]},{"idx": 1, "huts_idx": 4, "active": [0, 1, 1, 1], "philosopher": 1, "monarchy": 1, "bparagon": 100000, "elevators": 35, "name": "Spaceport", "i": 1, "result": [11399.999999999998, 570.0, 1140.0, 570.0, 153900.0]}]
+[
+  {
+    "name": "Catnip Field",
+    "i": 0,
+    "idx": 0,
+    "huts_idx": 0,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 0,
+    "monarchy": 0,
+    "bparagon": 0,
+    "elevators": 0,
+    "challenge_1k": 0,
+    "result": [
+      10.0
+    ]
+  },
+  {
+    "name": "Satellite",
+    "i": 63,
+    "idx": 1,
+    "huts_idx": 1,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 0,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      318886.8454658943,
+      89381.19798393584,
+      12755473.818635775,
+      41455.289910566265
+    ]
+  },
+  {
+    "name": "Lunar Outpost",
+    "i": 25,
+    "idx": 1,
+    "huts_idx": 1,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 0,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      51324.44207300637,
+      8500.032203321362,
+      1700006.440664272,
+      11050.041864317769,
+      2550.009660996408,
+      12750.048304982041
+    ]
+  },
+  {
+    "name": "Griffins",
+    "i": 47,
+    "idx": 1,
+    "huts_idx": 1,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 0,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      605644.0045015933
+    ]
+  },
+  {
+    "name": "Zebras",
+    "i": 25,
+    "idx": 1,
+    "huts_idx": 1,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 0,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      699527.7431705293
+    ]
+  },
+  {
+    "name": "Sun Altar",
+    "i": 6,
+    "idx": 1,
+    "huts_idx": 1,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 0,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      49133.30078124999,
+      98266.60156249999
+    ]
+  },
+  {
+    "name": "Black Obelisk",
+    "i": 1,
+    "idx": 1,
+    "huts_idx": 1,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 0,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      114.99999999999999
+    ]
+  },
+  {
+    "name": "Sunspire",
+    "i": 24,
+    "idx": 1,
+    "huts_idx": 1,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 0,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      35781.470238901755,
+      21468882.143341053,
+      715629.4047780351
+    ]
+  },
+  {
+    "name": "Temporal Battery",
+    "i": 2,
+    "idx": 1,
+    "huts_idx": 1,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 0,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      7.8125
+    ]
+  },
+  {
+    "name": "Void Rift",
+    "i": 7,
+    "idx": 1,
+    "huts_idx": 1,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 0,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      470.61387750000017
+    ]
+  },
+  {
+    "name": "Hut",
+    "i": 53,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 0,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      30675359.649723962
+    ]
+  },
+  {
+    "name": "Log House",
+    "i": 86,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 0,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      7830999.837160318,
+      9788749.796450399
+    ]
+  },
+  {
+    "name": "Observatory",
+    "i": 107,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 0,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      7580477.151036806,
+      10107302.868049076,
+      353755.6003817176,
+      505365.14340245374
+    ]
+  },
+  {
+    "name": "Sunlifter",
+    "i": 23,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 0,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      12445728.778748438,
+      5600.5779504367965,
+      62228.643893742184
+    ]
+  },
+  {
+    "name": "Space Beacon",
+    "i": 21,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 0,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      941.0759000943999,
+      470537.95004719996,
+      470537.95004719996,
+      141161.38501415998
+    ]
+  },
+  {
+    "name": "Chapel",
+    "i": 61,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 0,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      5918694.544035692,
+      739836.8180044615,
+      739836.8180044615
+    ]
+  },
+  {
+    "name": "Observatory",
+    "i": 107,
+    "idx": 5,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      4623.117526575305,
+      6164.1567021004075,
+      215.74548457351426,
+      308.20783510502037
+    ]
+  },
+  {
+    "name": "Hut",
+    "i": 53,
+    "idx": 5,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      3497773.309298561
+    ]
+  },
+  {
+    "name": "Log House",
+    "i": 86,
+    "idx": 5,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      19993.80038544761,
+      24992.25048180951
+    ]
+  },
+  {
+    "name": "Brewery",
+    "i": 17,
+    "idx": 5,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      359126.60090355616,
+      269344.9506776671,
+      1795.6330045177808,
+      134672.47533883355
+    ]
+  },
+  {
+    "name": "Templar",
+    "i": 4,
+    "idx": 5,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      49761.11062933829,
+      58054.62906756134
+    ]
+  },
+  {
+    "name": "Basilica",
+    "i": 5,
+    "idx": 5,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      31100.694143336434,
+      51834.49023889406
+    ]
+  },
+  {
+    "name": "Unicorn Utopia",
+    "i": 18,
+    "idx": 5,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      6187.726802626121,
+      12375453.605252242,
+      61877.268026261205
+    ]
+  },
+  {
+    "name": "Black Pyramid",
+    "i": 9,
+    "idx": 5,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      17589.381459599597,
+      527681.4437879879,
+      17.589381459599597,
+      8794.690729799799
+    ]
+  },
+  {
+    "name": "Data Center",
+    "i": 21,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      1566.7578453914662,
+      156.6757845391466
+    ]
+  },
+  {
+    "name": "Spaceport",
+    "i": 3,
+    "idx": 5,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      12029.949142854566,
+      601.4974571427283,
+      1202.9949142854566,
+      601.4974571427283,
+      295981.86122350814
+    ]
+  },
+  {
+    "name": "Spaceport",
+    "i": 1,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      11399.999999999998,
+      570.0,
+      1140.0,
+      570.0,
+      153900.0
+    ]
+  },
+  {
+    "name": "Unicorn Utopia",
+    "i": 18,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      4950.181442100897,
+      12375453.605252242,
+      61877.268026261205
+    ]
+  },
+  {
+    "name": "Sunspire",
+    "i": 23,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      24891.457557496873,
+      18668593.168122657,
+      622286.4389374219
+    ]
+  },
+  {
+    "name": "Temple",
+    "i": 64,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      175376.12779097626,
+      109610.07986936015,
+      65766.04792161609,
+      43844.031947744064
+    ]
+  },
+  {
+    "name": "Mint",
+    "i": 47,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      2363186.6095747794,
+      189054.92876598233,
+      94527.46438299117
+    ]
+  },
+  {
+    "name": "Tradepost",
+    "i": 77,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      12040473.251979759,
+      4816189.300791903,
+      192647.57203167613
+    ]
+  },
+  {
+    "name": "Templar",
+    "i": 4,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      39808.88850347063,
+      58054.62906756134
+    ]
+  },
+  {
+    "name": "Basilica",
+    "i": 5,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      24880.555314669145,
+      51834.49023889406
+    ]
+  },
+  {
+    "name": "Stained Glass",
+    "i": 6,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      20733.796095557624,
+      51834.49023889405
+    ]
+  },
+  {
+    "name": "Stained Glass",
+    "i": 6,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      20733.796095557624,
+      51834.49023889405
+    ]
+  },
+  {
+    "name": "Templar",
+    "i": 4,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      49761.11062933829,
+      58054.62906756134
+    ]
+  },
+  {
+    "name": "Stained Glass",
+    "i": 6,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      25917.245119447027,
+      51834.49023889405
+    ]
+  },
+  {
+    "name": "Golden Spire",
+    "i": 6,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      15550.347071668215,
+      36284.14316722583
+    ]
+  },
+  {
+    "name": "Unicorn Utopia",
+    "i": 18,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      6187.726802626121,
+      12375453.605252242,
+      61877.268026261205
+    ]
+  },
+  {
+    "name": "Mint",
+    "i": 47,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 100000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      2363186.6095747794,
+      236318.66095747793,
+      94527.46438299117
+    ]
+  },
+  {
+    "name": "Templar",
+    "i": 4,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 200000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      24667.55050942408,
+      35973.51115957679
+    ]
+  },
+  {
+    "name": "Stained Glass",
+    "i": 6,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 200000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      12847.68255699171,
+      32119.206392479275
+    ]
+  },
+  {
+    "name": "Golden Spire",
+    "i": 6,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 200000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      7708.609534195026,
+      22483.444474735494
+    ]
+  },
+  {
+    "name": "Unicorn Utopia",
+    "i": 18,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 1,
+    "bparagon": 200000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      4950.181442100897,
+      12375453.605252242,
+      61877.268026261205
+    ]
+  },
+  {
+    "name": "Templar",
+    "i": 4,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 0,
+    "bparagon": 200000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      72903.8785316821,
+      85054.52495362912
+    ]
+  },
+  {
+    "name": "Stained Glass",
+    "i": 6,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 0,
+    "bparagon": 200000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      37970.770068584425,
+      75941.54013716885
+    ]
+  },
+  {
+    "name": "Golden Spire",
+    "i": 6,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 0,
+    "bparagon": 200000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      22782.462041150655,
+      53159.078096018195
+    ]
+  },
+  {
+    "name": "Unicorn Utopia",
+    "i": 18,
+    "idx": 1,
+    "huts_idx": 4,
+    "active": [
+      0,
+      1,
+      1,
+      1
+    ],
+    "philosopher": 1,
+    "monarchy": 0,
+    "bparagon": 200000,
+    "elevators": 35,
+    "challenge_1k": 0,
+    "result": [
+      6187.726802626121,
+      12375453.605252242,
+      61877.268026261205
+    ]
+  },
+  {
+    "name": "Temporal Press",
+    "i": 2,
+    "idx": 0,
+    "huts_idx": 0,
+    "active": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "philosopher": 0,
+    "monarchy": 0,
+    "bparagon": 0,
+    "elevators": 0,
+    "challenge_1k": 51,
+    "result": [
+      110.04010000000004,
+      11.004010000000005
+    ]
+  },
+  {
+    "name": "Temporal Press",
+    "i": 2,
+    "idx": 0,
+    "huts_idx": 0,
+    "active": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "philosopher": 0,
+    "monarchy": 0,
+    "bparagon": 0,
+    "elevators": 0,
+    "challenge_1k": 100,
+    "result": [
+      102.01,
+      10.201
+    ]
+  },
+  {
+    "name": "Planet Cracker",
+    "i": 0,
+    "idx": 0,
+    "huts_idx": 0,
+    "active": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "philosopher": 0,
+    "monarchy": 0,
+    "bparagon": 10000000000,
+    "elevators": 10000000000,
+    "challenge_1k": 10000000000,
+    "result": [
+      125000.0,
+      2500.0,
+      1750.0,
+      50.0
+    ]
+  }
+]

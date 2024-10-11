@@ -21,6 +21,7 @@ philosofer=0
 monrachy=0
 bparagon=0
 elevators=0
+challenge_1k=0
 
 space_oil_list=["Satellite","Space St.","Lunar Outpost","Moon Base"]
 
@@ -54,6 +55,12 @@ def get_space_oil_mul():
     mul=1-(get_limited_dr(5*elevators,75)/100)
     return mul
 
+def get_temporal_press_discount():
+    if challenge_1k<=90:
+        discount=-0.001*challenge_1k
+        return discount
+    return -0.09
+
 def get_discount(b):
     if b["Name"]=="Hut":
         total_discount=global_values[global_idx]+huts_values[huts_idx]
@@ -63,6 +70,8 @@ def get_discount(b):
         discount=global_values[global_idx]/100.0
         discount_dr=get_limited_dr(discount,b["Ratio"]-1)
         return discount_dr
+    if b["Name"]=="Temporal Press":
+        return get_temporal_press_discount()
     return 0
 
 def base_discount(b):
@@ -73,7 +82,7 @@ def base_discount(b):
         mul=0.5
     if b["Name"]=="Factory" and policies_active[2]==1:#communism
         mul=0.7
-    if b["Name"] in ["Mint","Tradepost","Temple"] and policies_active[0]==1:#liberalism
+    if "gold" in b["Recipe"].keys() and policies_active[0]==1:#liberalism
         mul_gold=0.8
     if b["Name"] in space_oil_list and elevators>0:
         mul_oil=get_space_oil_mul()

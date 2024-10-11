@@ -24,6 +24,14 @@ def show(s):
         cur_b+=1
         cur_str+=1
 
+    if discounts.policies_active[0]==1:
+        discount_info_gold="Gold: -20%"
+    else:
+        discount_info_gold="Gold: -0%"
+
+    s.addstr(cur_str+6,COL_R_0,discount_info_gold)
+
+
     cur_str=0
     s.addstr(3,COL_R_1,"Order of the Sun:")
     for b in bs.buildings:
@@ -44,8 +52,15 @@ def show(s):
         cur_b+=1
         cur_str+=1
 
-    discount_info=f"Discount: -{round((1-discounts.get_philosopher_mul())*100.0,2)}%"
+    ph_mul=discounts.get_philosopher_mul()
+    discount_info=f"Discount: -{round((1-ph_mul)*100.0,2)}%"
+    if discounts.policies_active[0]==1:
+        discount_info_gold_order=f"Gold: -{round((1-ph_mul*0.8)*100.0,2)}%"
+    else:
+        discount_info_gold_order="Gold: -0%"
+
     s.addstr(cur_str+6,COL_R_1,discount_info)
+    s.addstr(cur_str+7,COL_R_1,discount_info_gold_order)
 
     cur_str=0
     s.addstr(3,COL_R_2,"Cryptotheology:")

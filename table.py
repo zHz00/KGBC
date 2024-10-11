@@ -91,8 +91,14 @@ def show(s,b):
     if mul<1.0:
         base_discount_info+=f"Base discount: -{round((1-mul)*100,1)}%"
     if mul_gold<1.0:
-        base_discount_info+=f"Gold base discount: -{int(round((1-mul_gold)*100,0))}%"
+        if len(base_discount_info)>0:
+            base_discount_info+="; Gold: -"
+        else:
+            base_discount_info+="Gold base discount: -"
+        base_discount_info+=f"{round((1-mul*mul_gold)*100,1)}%"
     if mul_oil<1.0:
+        if len(base_discount_info)>0:
+            base_discount_info+="; "
         base_discount_info+=f"Oil base discount: -{round((1-mul_oil)*100,2)}%"
     
     #make header
@@ -231,13 +237,15 @@ def react(s,ch,m):
                 table_sel_e=(y_mouse-3)+table_start
     if letter=="+":
         tests.make_test(bs.b_selected,table_start+table_cursor)
+        s.move(0,0)
+        tests.print_result(s,tests.tests_list[-1])
         utils.show_message(f"Test added to list. Total: {len(tests.tests_list)}")
     if letter=="S":
         if len(tests.tests_list)==0:
             utils.show_message("Tests list is empty! Can't save.")
         else:
             f=open("kgbc_tests.txt","w",encoding="utf-8")
-            json.dump(tests.tests_list,f)
+            json.dump(tests.tests_list,f,indent=2)
             f.close()
             utils.show_message(f"Tests list saved. Total tests: {len(tests.tests_list)}")
     if key=="KEY_PPAGE":

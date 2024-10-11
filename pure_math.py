@@ -29,7 +29,9 @@ def get_unlimited_dr(value, stripe):
         result= math.sqrt(value) / math.sqrt(stripe) * math.sqrt(2)
     return result
 
-def format_num(real:float,mode) -> str:
+def format_num(real:float,mode,fill=True) -> str:
+    if real<=0:
+        return str(real)#we don't need negatives, but zero must be correct
     value_str=""
     idx=-1
     try:
@@ -41,7 +43,8 @@ def format_num(real:float,mode) -> str:
             value_str=("%.4e"%real)
         else:
             value_str=("%.3f"%(real/(10**(idx*3))))+postfix_list[idx]
-    value_str+=" "*(COL_WIDTH-len(value_str)-1)
+    if fill==True:
+        value_str+=" "*(COL_WIDTH-len(value_str)-1)
     return value_str
 
 def parse_num(s:str)->float:

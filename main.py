@@ -74,7 +74,7 @@ def react_key(s,mode,ch):
                     return M_EXIT
 
     probably_tab_mode=ord(letter)-48
-    if probably_tab_mode in tabs.modes and mode!=M_TABLE:
+    if probably_tab_mode in tabs.modes and mode not in [M_TABLE,M_HIDDEN_TEST]:
         return probably_tab_mode
     if probably_tab_mode==9:
         return M_HIDDEN_TEST
@@ -135,7 +135,7 @@ def main(s):
     c.init_pair(KEY,c.COLOR_YELLOW,c.COLOR_BLACK)
     c.init_pair(TEST_OK,c.COLOR_GREEN|8,c.COLOR_BLUE)
     c.init_pair(TEST_FAIL,c.COLOR_RED|8,c.COLOR_BLUE)
-    c.init_pair(BK_ALT,c.COLOR_BLACK|8,c.COLOR_BLUE)
+    c.init_pair(BK_ALT,c.COLOR_GREEN,c.COLOR_BLUE)
 
     s.bkgd(' ',c.color_pair(BK))
     s.clear()

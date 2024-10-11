@@ -44,17 +44,25 @@ def show(s):
         edit_box_text=pure_math.format_num(discounts.bparagon,FLOAT_KG)
     edit_box_text+=" "*(COL_WIDTH-len(edit_box_text))
     s.addstr(BLOCK_3+2,COL_1+CAP_LEN,edit_box_text,c.color_pair(OTHER_BTN))
+
     s.addstr(BLOCK_3+3,COL_1,chr(83)+f":Elevator count: ",c.color_pair(BK_ALT))
     edit_box_text=f"{discounts.elevators}"
     edit_box_text+=" "*(COL_WIDTH-len(edit_box_text))
     s.addstr(BLOCK_3+3,COL_1+CAP_LEN,edit_box_text,c.color_pair(OTHER_BTN))
 
+    s.addstr(BLOCK_3+4,COL_1,chr(84)+f":1000 years: ",c.color_pair(BK_ALT))
+    edit_box_text=f"{discounts.challenge_1k}"
+    edit_box_text+=" "*(COL_WIDTH-len(edit_box_text))
+    s.addstr(BLOCK_3+4,COL_1+CAP_LEN,edit_box_text,c.color_pair(OTHER_BTN))
+
     discount_philosofer_amount=round((1-discounts.get_philosopher_mul())*100.0,2)
     discount_elevators_amount=round((1-discounts.get_space_oil_mul())*100,2)
+    discount_1k_amount=round((discounts.get_temporal_press_discount())*100,2)
     s.addstr(BLOCK_3+0,COL_2,f"Order of the Sun (now:-{discount_philosofer_amount}%)",c.color_pair(BK_ALT))
     s.addstr(BLOCK_3+1,COL_2,"Affects philosopher leader",c.color_pair(BK_ALT))
     s.addstr(BLOCK_3+2,COL_2,"Affects philosopher leader",c.color_pair(BK_ALT))
-    s.addstr(BLOCK_3+3,COL_2,f"-5% to space oil (now:-{discount_elevators_amount}%)",c.color_pair(BK_ALT))
+    s.addstr(BLOCK_3+3,COL_2,f"Base space oil (now:-{discount_elevators_amount}%)",c.color_pair(BK_ALT))
+    s.addstr(BLOCK_3+4,COL_2,f"Temporal press (now:{discount_1k_amount}%)",c.color_pair(BK_ALT))
     
     #for testing colors
     #s.addstr(BLOCK_3+4,COL_0,"TEST:")
@@ -108,7 +116,7 @@ def react(s,ch,m):
     if m!=None and m[4]&c.BUTTON1_PRESSED:
         if x_mouse >= COL_1+2 and x_mouse <= COL_1+4 and y_mouse>=BLOCK_3 and y_mouse<BLOCK_3+2:
             option=y_mouse-BLOCK_3
-        if x_mouse >= COL_1+CAP_LEN and x_mouse <= COL_1+CAP_LEN+EDIT_WIDTH+1 and y_mouse>=BLOCK_3+2 and y_mouse<BLOCK_3+4:
+        if x_mouse >= COL_1+CAP_LEN and x_mouse <= COL_1+CAP_LEN+EDIT_WIDTH+1 and y_mouse>=BLOCK_3+2 and y_mouse<BLOCK_3+5:
             option=y_mouse-BLOCK_3
     else:
         option=ord(letter)-80
@@ -162,6 +170,31 @@ def react(s,ch,m):
                     utils.show_message("Number must be >=0!")
                 else:
                     discounts.elevators=int(val)
+            except:
+                utils.show_message("Invalid input!")
+
+        return M_WORKSHOP
+    if option==4:
+        tabs.active=M_EDIT
+        tabs.show_footer(s)
+        tabs.active=M_WORKSHOP
+        s.keypad(1)
+        s.refresh()
+        c.curs_set(1)
+        win = c.newwin(1,COL_WIDTH,BLOCK_3+4, COL_1+CAP_LEN)
+        tb = c.textpad.Textbox(win)
+        text = tb.edit(utils.edit_keys)
+        c.curs_set(0)
+        del win
+        if utils.user_cancel:
+            utils.user_cancel=False
+        else:
+            try:
+                val=pure_math.parse_num(text.strip())
+                if val<0:
+                    utils.show_message("Number must be >=0!")
+                else:
+                    discounts.challenge_1k=int(val)
             except:
                 utils.show_message("Invalid input!")
 
