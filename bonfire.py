@@ -12,9 +12,9 @@ def show(s):
     letter_counter_l=0
     letter_counter_r=0
     (y,x)=tabs.gen_coord(0,0)
-    s.addstr(y-1,x,"CTRL+",c.color_pair(ATTENTION)|c.A_BOLD)
+    s.addstr(y-1,x,"CTRL+",c.color_pair(ATTENTION))
     (y,x)=tabs.gen_coord(2,0)
-    s.addstr(y-1,x,"ALT+",c.color_pair(ATTENTION)|c.A_BOLD)
+    s.addstr(y-1,x,"ALT+",c.color_pair(ATTENTION))
     for b in bs.buildings:
             if b["Category"]!="Buildings":
                 continue

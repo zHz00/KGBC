@@ -102,9 +102,9 @@ def print_result(s,t):
                     continue
                 flag_ok=False
             if flag_ok:
-                style=c.color_pair(TEST_OK)|c.A_BOLD
+                style=c.color_pair(TEST_OK)
             else:
-                style=c.color_pair(TEST_FAIL)|c.A_BOLD
+                style=c.color_pair(TEST_FAIL)
             for i in range(len(t['result'])):
                 s.addstr(pure_math.format_num(t['result'][i],FLOAT_KG)+"|",style)
             s.addstr("<-REF\n")
@@ -120,8 +120,7 @@ def print_result(s,t):
             else:
                 return 0
     if found==False:
-        style=c.color_pair(TEST_FAIL)|c.A_BOLD
-        s.addstr("NOT FOUND",style)
+        s.addstr("NOT FOUND",c.color_pair(TEST_FAIL))
         s.addstr("\n"+("="*78)+"\n")
         return 0
 

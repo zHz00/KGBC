@@ -99,7 +99,7 @@ def show(s,b):
 
     s.clear()
 
-    s.addstr(0,0,info,c.color_pair(BUILDING_HEADER)|c.A_BOLD)
+    s.addstr(0,0,info,c.color_pair(BUILDING_HEADER))
     s.chgat(c.color_pair(INACTIVE_TAB))
     s.addstr(1,0,ratio_info,c.color_pair(INACTIVE_TAB))
     s.chgat(c.color_pair(INACTIVE_TAB))
@@ -134,7 +134,7 @@ def show(s,b):
         sel_hint="SELECT"
     if sel_mode==SEL_ENDED:
         sel_hint=f"SUM OF {real_sel_e-real_sel_b+1}"
-    s.addstr(0,68,sel_hint,c.color_pair(ATTENTION_INACTIVE)|c.A_BOLD)
+    s.addstr(0,68,sel_hint,c.color_pair(ATTENTION_INACTIVE))
 
     style=c.color_pair(BK)|c.A_BOLD
     s.addstr(2,0,"#   |",style)
@@ -154,12 +154,12 @@ def show(s,b):
             inside_selection=True
         if inside_selection:
             if (i-table_start)==table_cursor:
-                style=c.color_pair(BK_CUR_SEL)|c.A_BOLD
+                style=c.color_pair(BK_CURSOR_SEL)
             else:
-                style=c.color_pair(BK_SEL)+c.A_BOLD
+                style=c.color_pair(BK_SEL)
         else:
             if (i-table_start)==table_cursor:
-                style=c.color_pair(BK_CUR)
+                style=c.color_pair(BK_CURSOR)
             else:
                 style=c.color_pair(BK)
         s.addstr(3+(i-table_start),0,id,style)
@@ -172,14 +172,14 @@ def show(s,b):
                 s.addstr(3+(i-table_start),4+j*COL_WIDTH,"|"+pure_math.format_num(values[j],float_mode),style)
         s.addstr("|",style)
         if real_sel_b!=-1 and real_sel_e!=-1:#counting sum
-            s.addstr(23,0,"SUM:|",c.color_pair(ATTENTION)|c.A_BOLD)
+            s.addstr(23,0,"SUM:|",c.color_pair(ATTENTION))
             sum=[0.0]*len(recipe)
             for i in range(real_sel_b,real_sel_e+1):
                 values=calc_recipe(b,i)
                 sum=list(map(add_component,sum,values))
             recipe_n=0
             for i in range(len(sum)):
-                s.addstr(23,4+i*COL_WIDTH,"|"+("[OVERFLOW] " if sum[i]==OVERFLOW else pure_math.format_num(sum[i],float_mode)),c.color_pair(ATTENTION)|c.A_BOLD)
+                s.addstr(23,4+i*COL_WIDTH,"|"+("[OVERFLOW] " if sum[i]==OVERFLOW else pure_math.format_num(sum[i],float_mode)),c.color_pair(ATTENTION))
 
 def react(s,ch,m):
     global table_cursor

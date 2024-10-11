@@ -13,9 +13,9 @@ def show(s):
     s.addstr(1,COL_1,"Discount Name",c.A_BOLD)
     s.addstr(1,COL_2,"Discount Effect",c.A_BOLD)
     s.addstr(BLOCK_0,COL_0,"Metaphysics")
-    s.addstr(BLOCK_1,COL_0,"Huts")
+    s.addstr(BLOCK_1,COL_0,"Huts",c.color_pair(BK_ALT))
     s.addstr(BLOCK_2,COL_0,"Policies")
-    s.addstr(BLOCK_3,COL_0,"Other")
+    s.addstr(BLOCK_3,COL_0,"Other",c.color_pair(BK_ALT))
     for i in range(1,24):
         s.addstr(i,COL_1-1,"|")
         s.addstr(i,COL_2-1,"|")
@@ -27,34 +27,40 @@ def show(s):
     for i in range(len(discounts.huts_list)):
         selected="X" if discounts.huts_idx==i else " "
         postfix="" if i==0 else " Huts"
-        s.addstr(BLOCK_1+i,COL_1,chr(71+i)+":("+selected+") "+discounts.huts_list[i]+postfix)
-        s.addstr(BLOCK_1+i,COL_2,f"({discounts.huts_values[i]}%)")
+        s.addstr(BLOCK_1+i,COL_1,chr(71+i)+":("+selected+") "+discounts.huts_list[i]+postfix,c.color_pair(BK_ALT))
+        s.addstr(BLOCK_1+i,COL_2,f"({discounts.huts_values[i]}%)",c.color_pair(BK_ALT))
     for i in range(len(discounts.policies_list)):
         selected="X" if discounts.policies_active[i]==1 else " "
         s.addstr(BLOCK_2+i,COL_1,chr(76+i)+":["+selected+"] "+discounts.policies_list[i])
         s.addstr(BLOCK_2+i,COL_2,discounts.policies_desc[i])
     selected="X" if discounts.philosofer==1 else " "
-    s.addstr(BLOCK_3+0,COL_1,chr(80)+":["+selected+"] Philosopher leader")
+    s.addstr(BLOCK_3+0,COL_1,chr(80)+":["+selected+"] Philosopher leader",c.color_pair(BK_ALT))
     selected="X" if discounts.monrachy==1 else " "
-    s.addstr(BLOCK_3+1,COL_1,chr(81)+":["+selected+"] Monarchy")
-    s.addstr(BLOCK_3+2,COL_1,chr(82)+f":Burned paragon: ")
+    s.addstr(BLOCK_3+1,COL_1,chr(81)+":["+selected+"] Monarchy",c.color_pair(BK_ALT))
+    s.addstr(BLOCK_3+2,COL_1,chr(82)+f":Burned paragon: ",c.color_pair(BK_ALT))
     if discounts.bparagon<9999999:
         edit_box_text=f"{discounts.bparagon}"
     else:
         edit_box_text=pure_math.format_num(discounts.bparagon,FLOAT_KG)
     edit_box_text+=" "*(COL_WIDTH-len(edit_box_text))
     s.addstr(BLOCK_3+2,COL_1+CAP_LEN,edit_box_text,c.color_pair(OTHER_BTN))
-    s.addstr(BLOCK_3+3,COL_1,chr(83)+f":Elevator count: ")
+    s.addstr(BLOCK_3+3,COL_1,chr(83)+f":Elevator count: ",c.color_pair(BK_ALT))
     edit_box_text=f"{discounts.elevators}"
     edit_box_text+=" "*(COL_WIDTH-len(edit_box_text))
     s.addstr(BLOCK_3+3,COL_1+CAP_LEN,edit_box_text,c.color_pair(OTHER_BTN))
 
     discount_philosofer_amount=round((1-discounts.get_philosopher_mul())*100.0,2)
     discount_elevators_amount=round((1-discounts.get_space_oil_mul())*100,2)
-    s.addstr(BLOCK_3+0,COL_2,f"Order of the Sun (now:-{discount_philosofer_amount}%)")
-    s.addstr(BLOCK_3+1,COL_2,"Affects philosopher leader")
-    s.addstr(BLOCK_3+2,COL_2,"Affects philosopher leader")
-    s.addstr(BLOCK_3+3,COL_2,f"-5% to space oil (now:-{discount_elevators_amount}%)")
+    s.addstr(BLOCK_3+0,COL_2,f"Order of the Sun (now:-{discount_philosofer_amount}%)",c.color_pair(BK_ALT))
+    s.addstr(BLOCK_3+1,COL_2,"Affects philosopher leader",c.color_pair(BK_ALT))
+    s.addstr(BLOCK_3+2,COL_2,"Affects philosopher leader",c.color_pair(BK_ALT))
+    s.addstr(BLOCK_3+3,COL_2,f"-5% to space oil (now:-{discount_elevators_amount}%)",c.color_pair(BK_ALT))
+    
+    #for testing colors
+    #s.addstr(BLOCK_3+4,COL_0,"TEST:")
+    #for i in range(c.COLORS):
+        #s.addstr("TEST ",c.color_pair(i))
+    
 
 def react(s,ch,m):
     key=""
@@ -78,21 +84,21 @@ def react(s,ch,m):
         x_mouse=m[1]
         y_mouse=m[2]
     option=-1
-    if m!=None and m[4]&c.BUTTON1_PRESSED and x_mouse >= COL_1+2 and x_mouse <= COL_1+4 and y_mouse>=BLOCK_0 and y_mouse<BLOCK_1-1:
+    if m!=None and m[4]&c.BUTTON1_PRESSED and x_mouse >= COL_1+2 and x_mouse <= COL_1+4 and y_mouse>=BLOCK_0 and y_mouse<BLOCK_1:
         option=y_mouse-BLOCK_0
     else:
         option=ord(letter)-65
     if option>=0 and option<len(discounts.global_list):
         discounts.global_idx=option
         return M_WORKSHOP
-    if m!=None and m[4]&c.BUTTON1_PRESSED and x_mouse >= COL_1+2 and x_mouse <= COL_1+4 and y_mouse>=BLOCK_1 and y_mouse<BLOCK_2-1:
+    if m!=None and m[4]&c.BUTTON1_PRESSED and x_mouse >= COL_1+2 and x_mouse <= COL_1+4 and y_mouse>=BLOCK_1 and y_mouse<BLOCK_2:
         option=y_mouse-BLOCK_1
     else:
         option=ord(letter)-71
     if option>=0 and option<len(discounts.huts_list):
         discounts.huts_idx=option
         return M_WORKSHOP
-    if m!=None and m[4]&c.BUTTON1_PRESSED and x_mouse >= COL_1+2 and x_mouse <= COL_1+4 and y_mouse>=BLOCK_2 and y_mouse<BLOCK_3-1:
+    if m!=None and m[4]&c.BUTTON1_PRESSED and x_mouse >= COL_1+2 and x_mouse <= COL_1+4 and y_mouse>=BLOCK_2 and y_mouse<BLOCK_3:
         option=y_mouse-BLOCK_2
     else:
         option=ord(letter)-76

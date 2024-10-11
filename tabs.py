@@ -43,7 +43,7 @@ def show_header(s):
             s.addstr(0,x,caption,c.color_pair(INACTIVE_TAB))
     s.chgat(c.color_pair(INACTIVE_TAB))
     s.addstr(0,77,"[",c.color_pair(INACTIVE_TAB)|c.A_BOLD)
-    s.addstr(0,78,"X",c.color_pair(ATTENTION_INACTIVE)|c.A_BOLD)
+    s.addstr(0,78,"X",c.color_pair(ATTENTION_INACTIVE))
     s.addstr(0,79,"]",c.color_pair(INACTIVE_TAB)|c.A_BOLD)
 
 def show_footer(s):
@@ -80,9 +80,9 @@ def gen_attr(y,x):
     if y==0:
         return c.color_pair(OTHER_BTN)
     if y%2==0:
-        return c.color_pair(EVEN_BTN)#|c.A_BOLD
+        return c.color_pair(EVEN_BTN)
     else:
-        return c.color_pair(ODD_BTN)#|c.A_BOLD
+        return c.color_pair(ODD_BTN)
 
 def gen_coord(col,row):
     x=5+col*(BUTTON_LEN+1)
