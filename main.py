@@ -135,7 +135,8 @@ def main(s):
     c.init_pair(KEY,c.COLOR_YELLOW,c.COLOR_BLACK)
     c.init_pair(TEST_OK,c.COLOR_GREEN|8,c.COLOR_BLUE)
     c.init_pair(TEST_FAIL,c.COLOR_RED|8,c.COLOR_BLUE)
-    c.init_pair(BK_ALT,c.COLOR_GREEN,c.COLOR_BLUE)
+    c.init_pair(BK_ALT,c.COLOR_YELLOW,c.COLOR_BLUE)
+    c.init_pair(RATIO_INFO,c.COLOR_CYAN|8,c.COLOR_BLUE)
 
     s.bkgd(' ',c.color_pair(BK))
     s.clear()

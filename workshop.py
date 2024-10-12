@@ -62,7 +62,7 @@ def show(s):
     s.addstr(BLOCK_3+1,COL_2,"Affects philosopher leader",c.color_pair(BK_ALT))
     s.addstr(BLOCK_3+2,COL_2,"Affects philosopher leader",c.color_pair(BK_ALT))
     s.addstr(BLOCK_3+3,COL_2,f"Base space oil (now:-{discount_elevators_amount}%)",c.color_pair(BK_ALT))
-    s.addstr(BLOCK_3+4,COL_2,f"Temporal press (now:{discount_1k_amount}%)",c.color_pair(BK_ALT))
+    s.addstr(BLOCK_3+4,COL_2,f"Temporal Press (now:{discount_1k_amount}%)",c.color_pair(BK_ALT))
     
     #for testing colors
     #s.addstr(BLOCK_3+4,COL_0,"TEST:")

@@ -14,6 +14,21 @@ table_cursor=0
 table_sel_b=-1
 table_sel_e=-1
 
+def move_down():
+    global table_cursor,table_start
+    if table_cursor<TABLE_MAX-1:#similar to KEY_DOWN
+        table_cursor+=1
+    else:
+        table_start+=1
+
+def order_sel():
+    global table_sel_b,table_sel_e
+    if table_sel_e<table_sel_b:
+        tmp=table_sel_b
+        table_sel_b=table_sel_e
+        table_sel_e=tmp
+
+
 float_mode=FLOAT_KG
 
 color_unlocking_list={
@@ -106,10 +121,14 @@ def show(s,b):
     s.clear()
 
     s.addstr(0,0,info,c.color_pair(BUILDING_HEADER))
-    s.chgat(c.color_pair(INACTIVE_TAB))
-    s.addstr(1,0,ratio_info,c.color_pair(INACTIVE_TAB))
-    s.chgat(c.color_pair(INACTIVE_TAB))
-    s.addstr(1,40,base_discount_info,c.color_pair(INACTIVE_TAB))
+    s.chgat(c.color_pair(BUILDING_HEADER))
+    s.addstr(1,0,ratio_info,c.color_pair(RATIO_INFO))
+    s.chgat(c.color_pair(RATIO_INFO))
+    s.addstr(1,40,base_discount_info,c.color_pair(RATIO_INFO))
+    s.addstr(0,0,"[",c.color_pair(INACTIVE_TAB)|c.A_BOLD)
+    s.addch(0,1,c.ACS_LARROW,c.color_pair(ATTENTION_INACTIVE))
+    s.addstr(0,2,"]",c.color_pair(INACTIVE_TAB)|c.A_BOLD)
+    
 
     id_len=4
     recipe_n=0
@@ -223,7 +242,9 @@ def react(s,ch,m):
             table_start+=1
         if m[4]&c.BUTTON3_PRESSED:
             return tabs.get_tab(bs.b_selected)
-    if x_mouse!=0 and y_mouse!=0:
+    if x_mouse!=0 or y_mouse!=0:
+        if y_mouse==0 and x_mouse in [0,1,2]:
+            return tabs.get_tab(bs.b_selected)
         if y_mouse-3<TABLE_MAX and y_mouse>=3 and m[4]&c.BUTTON1_PRESSED:
             table_cursor=y_mouse-3
         if y_mouse<3 and m[4]&c.BUTTON1_PRESSED:
@@ -262,13 +283,35 @@ def react(s,ch,m):
             if table_start<0:
                 table_start=0
     if key=="KEY_DOWN":
-        if table_cursor<TABLE_MAX-1:
-            table_cursor+=1
-        else:
-            table_start+=1
+        move_down()
     if key=="KEY_HOME":
         table_start=0
         table_cursor=0
+    if key=="KEY_IC":#insert
+        if table_sel_b==-1:#no selection
+            table_sel_b=table_cursor+table_start
+            table_sel_e=table_sel_b
+            move_down()
+            return M_TABLE
+        if (table_sel_b!=-1 and table_sel_e==-1):#continue selection
+            table_sel_e=table_cursor+table_start
+            order_sel()
+            
+        #we're in the end of existing selection
+        order_sel()
+
+        if (table_cursor+table_start in [table_sel_e,table_sel_e+1]):
+            table_sel_e=table_cursor+table_start
+            move_down()
+            return M_TABLE
+        if table_cursor+table_start==table_sel_b:#reduce selection
+            table_sel_b+=1
+            move_down()
+            return M_TABLE
+
+        #now we have case with existing selection
+        return M_TABLE
+
     if letter=='I' and ctrl==True:#workd on windows for tab
         if float_mode==FLOAT_KG:
             float_mode=FLOAT_SCI
@@ -282,7 +325,7 @@ def react(s,ch,m):
             table_sel_e=-1
         else:
             table_sel_e=table_cursor+table_start
-    if letter=="-":
+    if letter=="-" or key=="PADMINUS":
         table_sel_b=-1
         table_sel_e=-1
     return M_TABLE
