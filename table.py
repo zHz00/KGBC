@@ -40,7 +40,7 @@ def calc_sum_new_style(b,beg,end):
         return calc_recipe(b,beg)#not for speed but for summing near 1e308
     sum=[0.0]*len(b["Recipe"])
     v1=calc_recipe(b,beg)
-    v2=calc_recipe(b,end+1)
+    v2=calc_recipe(b,end)
     ratios=get_ratios(b)
     for i in range(len(sum)):
         if v1[i]==OVERFLOW or v2[i]==OVERFLOW:
@@ -50,6 +50,7 @@ def calc_sum_new_style(b,beg,end):
                 sum[i]=(v1[i]-v2[i])/(1-ratios[i])
             except OverflowError:
                 sum[i]=OVERFLOW
+    sum=list(map(add_component,sum,v2))#adding last
     return sum
 
 
@@ -243,14 +244,14 @@ def show(s,b):
             for i in range(len(sum)):
                 s.addstr(23,4+i*COL_WIDTH,"|"+("[OVERFLOW] " if sum[i]==OVERFLOW else pure_math.format_num(sum[i],float_mode)),c.color_pair(ATTENTION))
             s.addstr("|",c.color_pair(ATTENTION))
-            #sum2=calc_sum_new_style(b,real_sel_b,real_sel_e)
+            """sum2=calc_sum_old_style(b,real_sel_b,real_sel_e)
 
             fail=False
-            #for i in range(len(sum)):
-                #if sum2[i]-sum[i]>1e-3:
-                    #fail=True
-            #if fail==True:
-                #utils.show_message("sum2!=sum1 !")
+            for i in range(len(sum)):
+                if sum2[i]-sum[i]>1e-3:
+                    fail=True
+            if fail==True:
+                utils.show_message("sum2!=sum1 !")"""
 
 
 
