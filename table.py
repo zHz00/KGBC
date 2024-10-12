@@ -28,6 +28,30 @@ def order_sel():
         table_sel_b=table_sel_e
         table_sel_e=tmp
 
+def calc_sum_old_style(b,beg,end):
+    sum=[0.0]*len(b["Recipe"])
+    for i in range(beg,end+1):
+        values=calc_recipe(b,i)
+        sum=list(map(add_component,sum,values))
+    return sum
+
+def calc_sum_new_style(b,beg,end):
+    if beg==end:
+        return calc_recipe(b,beg)#not for speed but for summing near 1e308
+    sum=[0.0]*len(b["Recipe"])
+    v1=calc_recipe(b,beg)
+    v2=calc_recipe(b,end+1)
+    ratios=get_ratios(b)
+    for i in range(len(sum)):
+        if v1[i]==OVERFLOW or v2[i]==OVERFLOW:
+            sum[i]=OVERFLOW
+        else:
+            try:
+                sum[i]=(v1[i]-v2[i])/(1-ratios[i])
+            except OverflowError:
+                sum[i]=OVERFLOW
+    return sum
+
 
 float_mode=FLOAT_KG
 
@@ -56,7 +80,23 @@ def add_component(a,b):
         return OVERFLOW
     return a+b
 
-def calc_recipe(b,i):
+def get_ratios(b):
+    (recipe,mul,mul_gold,mul_oil)=discounts.base_discount(b)
+    ratio=b["Ratio"]+discounts.get_discount(b)
+    ratio_oil=1.05
+    ratio_starchart=1.35*ratio
+    ratios=[]
+    for key,value in recipe.items():
+        if key=="oil" and discounts.using_oil_ratio(b):
+            ratios.append(ratio_oil)
+            continue
+        if key=="starchart" and discounts.using_starchart_ratio(b):
+            ratios.append(ratio_starchart)
+            continue
+        ratios.append(ratio)
+    return ratios
+
+def calc_recipe(b,i):#i begins with zero for first building!
     (recipe,mul,mul_gold,mul_oil)=discounts.base_discount(b)
     ratio=b["Ratio"]+discounts.get_discount(b)
     ratio_oil=1.05
@@ -198,13 +238,21 @@ def show(s,b):
         s.addstr("|",style)
         if real_sel_b!=-1 and real_sel_e!=-1:#counting sum
             s.addstr(23,0,"SUM:|",c.color_pair(ATTENTION))
-            sum=[0.0]*len(recipe)
-            for i in range(real_sel_b,real_sel_e+1):
-                values=calc_recipe(b,i)
-                sum=list(map(add_component,sum,values))
+            sum=calc_sum_new_style(b,real_sel_b,real_sel_e)
             recipe_n=0
             for i in range(len(sum)):
                 s.addstr(23,4+i*COL_WIDTH,"|"+("[OVERFLOW] " if sum[i]==OVERFLOW else pure_math.format_num(sum[i],float_mode)),c.color_pair(ATTENTION))
+            s.addstr("|",c.color_pair(ATTENTION))
+            #sum2=calc_sum_new_style(b,real_sel_b,real_sel_e)
+
+            fail=False
+            #for i in range(len(sum)):
+                #if sum2[i]-sum[i]>1e-3:
+                    #fail=True
+            #if fail==True:
+                #utils.show_message("sum2!=sum1 !")
+
+
 
 def react(s,ch,m):
     global table_cursor
@@ -296,7 +344,7 @@ def react(s,ch,m):
         if (table_sel_b!=-1 and table_sel_e==-1):#continue selection
             table_sel_e=table_cursor+table_start
             order_sel()
-            
+
         #we're in the end of existing selection
         order_sel()
 
