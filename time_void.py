@@ -29,6 +29,9 @@ def show(s):
         if b["Category"]!="Void":
             continue
         if len(b["Recipe"])==0:
+            b['Letter']=''
+            b["x"]=0
+            b["y"]=0
             continue#exclue Used Cryochambers
         letter=chr(65+cur_b)
         b["Letter"]=letter

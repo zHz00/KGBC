@@ -17,6 +17,7 @@ import space
 import time_void
 import discounts
 import help
+import db
 
 
 s = None
@@ -42,6 +43,8 @@ def show_page(s,mode):
         tests.show_hidden_test(s)
     if mode in [M_HELP,M_ABOUT]:
         help.show(s)
+    if mode==M_DATABASE:
+        db.show(s)
     s.refresh()
 
 def react_key(s,mode,ch):
@@ -82,6 +85,8 @@ def react_key(s,mode,ch):
         return probably_tab_mode
     if probably_tab_mode==9:
         return M_HIDDEN_TEST
+    if probably_tab_mode==0:
+        return M_DATABASE
     if key=="KEY_F(1)" and mode not in [M_HIDDEN_TEST,M_HELP]:
         help.page=mode
         return M_HELP
@@ -107,17 +112,30 @@ def react_key(s,mode,ch):
         return tests.react(s,ch,m)
     if mode in [M_HELP,M_ABOUT]:
         return help.react(s,ch,m)
+    if mode==M_DATABASE:
+        return db.react(s,ch,m)
 
     
 
 def main(s):
-    db_link=sl.connect("kg_db.db")
+    db_link=sl.connect(KG_DB_FILE)
     db_link.row_factory = sl.Row
     db_cursor=db_link.cursor()
     db_cursor.execute("SELECT * FROM BUILDINGS")
     fetch=db_cursor.fetchall()
+    buildings_tmp=[]
     for b in fetch:
-        bs.buildings.append({"Category":b["Category"],"Planet":b["Planet"],"Name":b["Name"],"Upgradable":b["Upgradable"],"Ratio":b["Ratio"],"Recipe":ast.literal_eval(b["Recipe"])})
+        buildings_tmp.append({"Category":b["Category"],"Planet":b["Planet"],"Name":b["Name"],"Upgradable":b["Upgradable"],"Ratio":b["Ratio"],"GroupName":b["GroupName"],"Recipe":ast.literal_eval(b["Recipe"])})
+        if b["GroupName"] not in bs.groups:
+            bs.groups.append(b["GroupName"])
+
+    db_link.close()
+
+    for g in bs.groups:
+        for b in buildings_tmp:
+            if b["GroupName"]==g:
+                bs.buildings.append(b)
+    #reorder list using buildings groups
 
     max_r=0
     for b in bs.buildings:

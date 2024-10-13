@@ -71,6 +71,8 @@ def show_footer(s):
         hint="F1:Help|F10:Exit|1..8:Select tab|Letters:Select building"
     if active==M_HIDDEN_TEST:
         hint="No Help|F10:Exit|Space:Next page|Esc:Abort"
+    if active==M_DATABASE:
+        hint="No Help|F10:Exit|A:Select folder|B:Parse sources|Esc:Cancel"
     s.move(24,0)
     key=True
     for ch in hint:

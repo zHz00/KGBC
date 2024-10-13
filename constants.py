@@ -42,9 +42,11 @@ M_TIME = 8
 M_HIDDEN_TEST = 9
 M_HELP = 10
 M_ABOUT = 11
+M_DATABASE = 12
 
 COL_WIDTH=12
 EDIT_WIDTH=10
+PATH_WIDTH=60
 
 FLOAT_KG=0
 FLOAT_SCI=1
@@ -65,5 +67,6 @@ COL_R_0=2
 COL_R_1=28
 COL_R_2=54
 
+KG_DB_FILE="kg_db.db"
 if __name__=="__main__":
     print("Not main module! ("+__file__+")")

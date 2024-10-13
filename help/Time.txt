@@ -9,7 +9,6 @@ F10          Exit
 Letter       Select building
 
 1..8         Switch tab
-9            Hidden tab for testing
 
 #=== MOUSE ===
 

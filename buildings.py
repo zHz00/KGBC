@@ -1,4 +1,5 @@
 buildings = []
+groups = []
 b_selected=None
 
 if __name__=="__main__":
