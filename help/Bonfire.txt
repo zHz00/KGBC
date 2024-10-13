@@ -1,0 +1,38 @@
+This tab contains list of all ordinary buildings,
+located on Cath surface.
+
+#=== KEYS ===
+
+F1           Show help
+F10          Exit
+Ctrl+Letter  Select building from left two columns
+Alt+Letter   Select building from right two columns
+
+Upgraded buildings are located in 2nd ant 4th columns.
+
+1..8         Switch tab
+9            Hidden tab for testing
+
+#=== MOUSE ===
+
+You can use mouse both to select buildings and tab.
+Red cross: Exit
+
+#=== INFORMATION ===
+
+In the bottom line is located information about current
+metaphysics discount (% to ratio).
+
+Some buildings have base discount, set in the **Workshop**
+tab.
+
+If the discount is active, building have additional text
+in square brackets:
+
+Lib      Liberalism (affects _Temple_, _Mint_ and _Tradepost_)
+Fas      Fascism (affects _Log House_)
+Comm     Communism (affects _Factory_)
+
+_Hut_ have five grades of discount (from 0% to -115%),
+which are set also in **Workshop** tab.
+<END>

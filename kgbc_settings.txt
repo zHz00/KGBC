@@ -1,0 +1,23 @@
+[
+  {
+    "name": "dummy",
+    "i": 0,
+    "idx": 5,
+    "huts_idx": 4,
+    "active": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "philosopher": 0,
+    "monarchy": 0,
+    "bparagon": 0,
+    "elevators": 0,
+    "challenge_1k": 0,
+    "show_disclaimer": 0,
+    "result": [
+      0.0
+    ]
+  }
+]

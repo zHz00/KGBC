@@ -78,7 +78,7 @@ def react_key(s,mode,ch):
                     return M_EXIT
 
     probably_tab_mode=ord(letter)-48
-    if probably_tab_mode in tabs.modes and mode not in [M_TABLE,M_HIDDEN_TEST]:
+    if probably_tab_mode in tabs.modes and mode not in [M_TABLE,M_HIDDEN_TEST,M_HELP,M_ABOUT]:
         return probably_tab_mode
     if probably_tab_mode==9:
         return M_HIDDEN_TEST

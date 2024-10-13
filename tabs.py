@@ -28,8 +28,10 @@ def get_tab_name(tab):
     for i in range(len(modes)):
         if modes[i]==tab:
             return headers[i]
-    if tab==M_HELP:
+    if tab==M_TABLE:
         return "Table"
+    if tab==M_HELP:
+        return "Help"
     if tab==M_ABOUT:
         return "About"
 

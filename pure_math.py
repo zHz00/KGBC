@@ -4,23 +4,18 @@ from constants import *
 
 postfix_list=["","K","M","G","T","P","E","Z","Y","R","Q"]
 
-def get_limited_dr(effect, limit):
-    diminishing_beginning=0.75
-    abs_effect = abs(effect)
-    limit_normal = diminishing_beginning * limit
-    if abs_effect <= limit_normal:
+def get_limited_dr(effect,limit):
+    if abs(effect)<0.75*limit:
         return effect
+    d=0.25*limit
+    u=0.75*limit
 
-    part = abs_effect - limit_normal
-    left = (1-diminishing_beginning) * limit
-
-    partial_effect = (1 - (left / (part + left))) * left
-
-    final_effect = limit_normal + partial_effect
-    if effect<0:
-        return -final_effect
+    effect_dr=u+d*(1-d/(abs(effect)-u+d))
+    if effect>0:
+        return effect_dr
     else:
-        return final_effect
+        return -effect_dr
+
 
 def get_unlimited_dr(value, stripe):
     try:
