@@ -3,6 +3,7 @@ from pure_math import get_unlimited_dr
 import copy
 
 from constants import *
+import tests
 
 global_list=["(None)","Enlighenment","Golden Ratio","Divine Proporion","Vitruvian Feline","Renaissance"]
 global_values=[0,-1.000,-2.618033988749895,-4.395811766527673,-6.395811766527673,-8.645811766527673]
@@ -17,13 +18,38 @@ policies_list_short=["Lib","Fas","Comm","B. Stick"]
 policies_desc=["-20% gold base prices","-50% log house base price","-30% factory base price","-15% embassy base price"]
 policies_active=[0,0,0,0]
 
+show_disclaimer=1#this is best place for this variable. show disclaimer on startup
+
 philosofer=0
 monrachy=0
 bparagon=0
 elevators=0
 challenge_1k=0
 
+settings=dict()
+SETTINGS_FILE="kgbc_settings.txt"
+
 space_oil_list=["Satellite","Space St.","Lunar Outpost","Moon Base"]
+
+def load_settings(t)->None:
+    global global_idx,huts_idx,policies_active,philosofer,monrachy,bparagon,elevators,challenge_1k,show_disclaimer
+
+    global_idx=t['idx']
+    huts_idx=t['huts_idx']
+    policies_active=copy.deepcopy(t['active'])
+    philosofer=t['philosopher']
+    monrachy=t['monarchy']
+    bparagon=t['bparagon']
+    elevators=t['elevators']
+    challenge_1k=t['challenge_1k']
+    show_disclaimer=t['show_disclaimer']
+
+def save_settings():
+    tests.save_tests(SETTINGS_FILE,settings)
+
+def update_settings():
+    global settings
+    settings=[tests.make_test(None,0)]
 
 def using_oil_ratio(b):
     if b["Name"] in space_oil_list:

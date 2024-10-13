@@ -14,6 +14,8 @@ table_cursor=0
 table_sel_b=-1
 table_sel_e=-1
 
+TABLE_MAX=20
+
 def move_down():
     global table_cursor,table_start
     if table_cursor<TABLE_MAX-1:#similar to KEY_DOWN
@@ -306,7 +308,7 @@ def react(s,ch,m):
             else:
                 table_sel_e=(y_mouse-3)+table_start
     if letter=="+":
-        tests.make_test(bs.b_selected,table_start+table_cursor)
+        tests.tests_list.append(tests.make_test(bs.b_selected,table_start+table_cursor))
         s.move(0,0)
         tests.print_result(s,tests.tests_list[-1])
         utils.show_message(f"Test added to list. Total: {len(tests.tests_list)}")
@@ -314,16 +316,14 @@ def react(s,ch,m):
         if len(tests.tests_list)==0:
             utils.show_message("Tests list is empty! Can't save.")
         else:
-            f=open("kgbc_tests.txt","w",encoding="utf-8")
-            json.dump(tests.tests_list,f,indent=2)
-            f.close()
+            tests.save_tests(tests.TESTS_FILE,tests.tests_list)
             utils.show_message(f"Tests list saved. Total tests: {len(tests.tests_list)}")
     if key=="KEY_PPAGE":
-        table_start-=20
+        table_start-=TABLE_MAX
         if table_start<0:
             table_start=0
     if key=="KEY_NPAGE":
-        table_start+=20
+        table_start+=TABLE_MAX
     if key=="KEY_UP":
         if table_cursor>0:
             table_cursor-=1

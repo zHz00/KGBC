@@ -17,7 +17,9 @@
     "challenge_1k": 0,
     "result": [
       10.0
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Satellite",
@@ -40,7 +42,9 @@
       89381.19798393584,
       12755473.818635775,
       41455.289910566265
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Lunar Outpost",
@@ -65,7 +69,9 @@
       11050.041864317769,
       2550.009660996408,
       12750.048304982041
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Griffins",
@@ -85,7 +91,9 @@
     "challenge_1k": 0,
     "result": [
       605644.0045015933
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Zebras",
@@ -105,7 +113,9 @@
     "challenge_1k": 0,
     "result": [
       699527.7431705293
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Sun Altar",
@@ -126,7 +136,9 @@
     "result": [
       49133.30078124999,
       98266.60156249999
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Black Obelisk",
@@ -146,7 +158,9 @@
     "challenge_1k": 0,
     "result": [
       114.99999999999999
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Sunspire",
@@ -168,7 +182,9 @@
       35781.470238901755,
       21468882.143341053,
       715629.4047780351
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Temporal Battery",
@@ -188,7 +204,9 @@
     "challenge_1k": 0,
     "result": [
       7.8125
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Void Rift",
@@ -208,7 +226,9 @@
     "challenge_1k": 0,
     "result": [
       470.61387750000017
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Hut",
@@ -228,7 +248,9 @@
     "challenge_1k": 0,
     "result": [
       30675359.649723962
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Log House",
@@ -249,7 +271,9 @@
     "result": [
       7830999.837160318,
       9788749.796450399
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Observatory",
@@ -272,7 +296,9 @@
       10107302.868049076,
       353755.6003817176,
       505365.14340245374
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Sunlifter",
@@ -294,7 +320,9 @@
       12445728.778748438,
       5600.5779504367965,
       62228.643893742184
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Space Beacon",
@@ -317,7 +345,9 @@
       470537.95004719996,
       470537.95004719996,
       141161.38501415998
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Chapel",
@@ -339,7 +369,9 @@
       5918694.544035692,
       739836.8180044615,
       739836.8180044615
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Observatory",
@@ -362,7 +394,9 @@
       6164.1567021004075,
       215.74548457351426,
       308.20783510502037
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Hut",
@@ -382,7 +416,9 @@
     "challenge_1k": 0,
     "result": [
       3497773.309298561
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Log House",
@@ -403,7 +439,9 @@
     "result": [
       19993.80038544761,
       24992.25048180951
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Brewery",
@@ -426,7 +464,9 @@
       269344.9506776671,
       1795.6330045177808,
       134672.47533883355
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Templar",
@@ -447,7 +487,9 @@
     "result": [
       49761.11062933829,
       58054.62906756134
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Basilica",
@@ -468,7 +510,9 @@
     "result": [
       31100.694143336434,
       51834.49023889406
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Unicorn Utopia",
@@ -490,7 +534,9 @@
       6187.726802626121,
       12375453.605252242,
       61877.268026261205
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Black Pyramid",
@@ -513,7 +559,9 @@
       527681.4437879879,
       17.589381459599597,
       8794.690729799799
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Data Center",
@@ -534,7 +582,9 @@
     "result": [
       1566.7578453914662,
       156.6757845391466
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Spaceport",
@@ -558,7 +608,9 @@
       1202.9949142854566,
       601.4974571427283,
       295981.86122350814
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Spaceport",
@@ -582,7 +634,9 @@
       1140.0,
       570.0,
       153900.0
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Unicorn Utopia",
@@ -604,7 +658,9 @@
       4950.181442100897,
       12375453.605252242,
       61877.268026261205
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Sunspire",
@@ -626,7 +682,9 @@
       24891.457557496873,
       18668593.168122657,
       622286.4389374219
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Temple",
@@ -649,7 +707,9 @@
       109610.07986936015,
       65766.04792161609,
       43844.031947744064
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Mint",
@@ -671,7 +731,9 @@
       2363186.6095747794,
       189054.92876598233,
       94527.46438299117
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Tradepost",
@@ -693,7 +755,9 @@
       12040473.251979759,
       4816189.300791903,
       192647.57203167613
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Templar",
@@ -714,7 +778,9 @@
     "result": [
       39808.88850347063,
       58054.62906756134
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Basilica",
@@ -735,7 +801,9 @@
     "result": [
       24880.555314669145,
       51834.49023889406
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Stained Glass",
@@ -756,7 +824,9 @@
     "result": [
       20733.796095557624,
       51834.49023889405
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Stained Glass",
@@ -777,7 +847,9 @@
     "result": [
       20733.796095557624,
       51834.49023889405
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Templar",
@@ -798,7 +870,9 @@
     "result": [
       49761.11062933829,
       58054.62906756134
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Stained Glass",
@@ -819,7 +893,9 @@
     "result": [
       25917.245119447027,
       51834.49023889405
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Golden Spire",
@@ -840,7 +916,9 @@
     "result": [
       15550.347071668215,
       36284.14316722583
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Unicorn Utopia",
@@ -862,7 +940,9 @@
       6187.726802626121,
       12375453.605252242,
       61877.268026261205
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Mint",
@@ -884,7 +964,9 @@
       2363186.6095747794,
       236318.66095747793,
       94527.46438299117
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Templar",
@@ -905,7 +987,9 @@
     "result": [
       24667.55050942408,
       35973.51115957679
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Stained Glass",
@@ -926,7 +1010,9 @@
     "result": [
       12847.68255699171,
       32119.206392479275
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Golden Spire",
@@ -947,7 +1033,9 @@
     "result": [
       7708.609534195026,
       22483.444474735494
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Unicorn Utopia",
@@ -969,7 +1057,9 @@
       4950.181442100897,
       12375453.605252242,
       61877.268026261205
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Templar",
@@ -990,7 +1080,9 @@
     "result": [
       72903.8785316821,
       85054.52495362912
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Stained Glass",
@@ -1011,7 +1103,9 @@
     "result": [
       37970.770068584425,
       75941.54013716885
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Golden Spire",
@@ -1032,7 +1126,9 @@
     "result": [
       22782.462041150655,
       53159.078096018195
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Unicorn Utopia",
@@ -1054,7 +1150,9 @@
       6187.726802626121,
       12375453.605252242,
       61877.268026261205
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Temporal Press",
@@ -1075,7 +1173,9 @@
     "result": [
       110.04010000000004,
       11.004010000000005
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Temporal Press",
@@ -1096,7 +1196,9 @@
     "result": [
       102.01,
       10.201
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
   },
   {
     "name": "Planet Cracker",
@@ -1119,6 +1221,32 @@
       2500.0,
       1750.0,
       50.0
-    ]
+    ],
+    "show_disclaimer": 1,
+    "passed": true
+  },
+  {
+    "name": "Harbour",
+    "i": 0,
+    "idx": 0,
+    "huts_idx": 0,
+    "active": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "philosopher": 0,
+    "monarchy": 0,
+    "bparagon": 10000000000,
+    "elevators": 10000000000,
+    "challenge_1k": 10000000000,
+    "show_disclaimer": 1,
+    "result": [
+      50.0,
+      75.0,
+      5.0
+    ],
+    "passed": true
   }
 ]

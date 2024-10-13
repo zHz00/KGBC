@@ -13,34 +13,68 @@ tests_list=[]
 page=0
 PAGE_SIZE=6
 
+TESTS_FILE="kgbc_tests.txt"
+
+kg_defaults={
+    'name':"dummy",
+    'i':1,
+    'idx':0,
+    'huts_idx':0,
+    'active':[0,0,0,0],
+    'philosopher':0,
+    'monarchy':0,
+    'bparagon':0,
+    'elevators':0,
+    'challenge_1k':0,
+    'result':[10.0],
+    'show_disclaimer':1
+}
+
+def save_tests(file:str,t_list)->None:
+    f=open(file,"w",encoding="utf-8")
+    json.dump(t_list,f,indent=2)
+    f.close()
+
+
+def load_tests(file:str)->None:
+    try:
+        f=open(file,"r",encoding="utf-8")
+    except:
+        return [kg_defaults]
+        
+    tests_list_raw=None
+    tests_list_raw=json.load(f)
+    tests_list_ordered=[]
+    f.close()
+    for t in tests_list_raw:
+            test=dict()
+            test["name"]=t["name"]
+            test["i"]=t["i"]
+            test['idx']=t["idx"]
+            test["huts_idx"]=t["huts_idx"]
+            test["active"]=copy.deepcopy(t["active"])
+            test["philosopher"]=t["philosopher"]
+            test["monarchy"]=t["monarchy"]
+            test["bparagon"]=t["bparagon"]
+            test["elevators"]=t["elevators"]
+            if "challenge_1k" not in t.keys():
+                test["challenge_1k"]=0
+            else:
+                test["challenge_1k"]=t["challenge_1k"]
+            tests_list_ordered.append(test)
+            test["result"]=copy.deepcopy(t["result"])
+            if "show_disclaimer" not in t.keys():
+                test["show_disclaimer"]=1
+            else:
+                test["show_disclaimer"]=t["show_disclaimer"]
+    return tests_list_ordered
+
 def show_hidden_test(s):
     global tests_list
 
     s.clear()
     if page==0:
-        f=open("kgbc_tests.txt","r",encoding="utf-8")
-        tests_list_tmp=None
-        tests_list_tmp=json.load(f)
-        f.close()
-        tests_list=[]
-        for t in tests_list_tmp:
-                test=dict()
-                test["name"]=t["name"]
-                test["i"]=t["i"]
-                test['idx']=t["idx"]
-                test["huts_idx"]=t["huts_idx"]
-                test["active"]=copy.deepcopy(t["active"])
-                test["philosopher"]=t["philosopher"]
-                test["monarchy"]=t["monarchy"]
-                test["bparagon"]=t["bparagon"]
-                test["elevators"]=t["elevators"]
-                if "challenge_1k" not in t.keys():
-                    test["challenge_1k"]=0
-                else:
-                    test["challenge_1k"]=t["challenge_1k"]
-                tests_list.append(test)
-                test["result"]=copy.deepcopy(t["result"])
-
+        tests_list=load_tests(TESTS_FILE)
         s.clear()
     n_start=page*PAGE_SIZE
     for n in range(n_start,n_start+PAGE_SIZE):
@@ -51,24 +85,15 @@ def show_hidden_test(s):
         print_test(s,tests_list[n])
         print_result(s,tests_list[n])
 
-    kg_test={
-    'name':"Catnip Field",
-    'i':1,
-    'idx':0,
-    'huts_idx':0,
-    'active':[0,0,0,0],
-    'philosopher':0,
-    'monarchy':0,
-    'bparagon':0,
-    'elevators':0,
-    'challenge_1k':0,
-    'result':[10.0]
-}
+
 
 def make_test(b,i):
     global tests
     test=dict()
-    test["name"]=b["Name"]
+    if b!=None:
+        test["name"]=b["Name"]
+    else:
+        test["name"]="dummy"
     test["i"]=i
     test['idx']=discounts.global_idx
     test["huts_idx"]=discounts.huts_idx
@@ -78,8 +103,12 @@ def make_test(b,i):
     test["bparagon"]=discounts.bparagon
     test["elevators"]=discounts.elevators
     test["challenge_1k"]=discounts.challenge_1k
-    test["result"]=table.calc_recipe(b,i)
-    tests_list.append(test)
+    test["show_disclaimer"]=discounts.show_disclaimer
+    if b!=None:
+        test["result"]=table.calc_recipe(b,i)
+    else:
+        test["result"]=[0.0]
+    return test
 
 def print_header(s,n, total, name, i):
     h=f"{n+1}/{total}. {name}#{i+1}"
@@ -106,14 +135,7 @@ def print_result(s,t):
     for b in bs.buildings:
         if b["Name"]==t['name']:
             found=True
-            discounts.global_idx=t['idx']
-            discounts.huts_idx=t['huts_idx']
-            discounts.policies_active=copy.deepcopy(t['active'])
-            discounts.philosofer=t['philosopher']
-            discounts.monrachy=t['monarchy']
-            discounts.bparagon=t['bparagon']
-            discounts.elevators=t['elevators']
-            discounts.challenge_1k=t['challenge_1k']
+            discounts.load_settings(t)
             values=table.calc_recipe(b,t['i'])
             flag_ok=True
             for i in range(len(values)):
@@ -156,9 +178,10 @@ def react(s,ch,m):
     if page*PAGE_SIZE>=len(tests_list):
         successful=0
         for t in tests_list:
-            if t['passed']==True:
+            if 'passed' in t and t['passed']==True:
                 successful+=1
         utils.show_message(f"Total: {len(tests_list)}, OK:{successful}")
+        discounts.load_settings(discounts.settings[0])
         page=0
         return M_BONFIRE
     return M_HIDDEN_TEST

@@ -28,6 +28,8 @@ def show(s):
     for b in bs.buildings:
         if b["Category"]!="Void":
             continue
+        if len(b["Recipe"])==0:
+            continue#exclue Used Cryochambers
         letter=chr(65+cur_b)
         b["Letter"]=letter
         filler=(BUTTON_LEN_L-len(b["Name"])-2)*" "

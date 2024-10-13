@@ -15,7 +15,8 @@ import trade
 import religion
 import space
 import time_void
-
+import discounts
+import help
 
 
 s = None
@@ -39,6 +40,9 @@ def show_page(s,mode):
         trade.show(s)
     if mode==M_HIDDEN_TEST:
         tests.show_hidden_test(s)
+    if mode in [M_HELP,M_ABOUT]:
+        help.show(s)
+    s.refresh()
 
 def react_key(s,mode,ch):
     key=""
@@ -78,6 +82,13 @@ def react_key(s,mode,ch):
         return probably_tab_mode
     if probably_tab_mode==9:
         return M_HIDDEN_TEST
+    if key=="KEY_F(1)" and mode not in [M_HIDDEN_TEST,M_HELP]:
+        help.page=mode
+        return M_HELP
+    if key=="KEY_F(1)" and mode==M_HELP:
+        help.page=M_ABOUT
+        help.line=-1
+        return M_ABOUT
     if mode==M_BONFIRE:
         return bonfire.react(s,ch,m)
     if mode==M_SPACE:
@@ -94,6 +105,8 @@ def react_key(s,mode,ch):
         return workshop.react(s,ch,m)
     if mode==M_HIDDEN_TEST:
         return tests.react(s,ch,m)
+    if mode in [M_HELP,M_ABOUT]:
+        return help.react(s,ch,m)
 
     
 
@@ -120,7 +133,7 @@ def main(s):
     for i in range(0, curses.COLORS):
         c.init_pair(i+1, i, c.COLOR_BLUE)
     c.init_pair(ODD_BTN, c.COLOR_WHITE,c.COLOR_CYAN)
-    c.init_pair(EVEN_BTN, c.COLOR_BLACK,c.COLOR_WHITE)
+    c.init_pair(EVEN_BTN, c.COLOR_CYAN,c.COLOR_WHITE)
     c.init_pair(OTHER_BTN, c.COLOR_BLACK,c.COLOR_WHITE)
     c.init_pair(SEL_TAB, c.COLOR_BLACK,c.COLOR_WHITE)
     c.init_pair(INACTIVE_TAB, c.COLOR_WHITE,c.COLOR_BLACK)
@@ -138,13 +151,27 @@ def main(s):
     c.init_pair(BK_ALT,c.COLOR_YELLOW,c.COLOR_BLUE)
     c.init_pair(RATIO_INFO,c.COLOR_CYAN|8,c.COLOR_BLUE)
 
+    c.init_pair(HELP_NORMAL,c.COLOR_BLACK|8,c.COLOR_BLACK)
+    c.init_pair(HELP_HEADER,c.COLOR_WHITE|8,c.COLOR_BLACK)
+    c.init_pair(HELP_BOLD,c.COLOR_MAGENTA|8,c.COLOR_BLACK)
+    c.init_pair(HELP_ITALIC,c.COLOR_CYAN|8,c.COLOR_BLACK)
+    c.init_pair(HELP_NAME,c.COLOR_YELLOW,c.COLOR_BLACK)
+
     s.bkgd(' ',c.color_pair(BK))
     s.clear()
+    s.refresh()
 
-    tabs.active=M_BONFIRE
+    discounts.settings=tests.load_tests(discounts.SETTINGS_FILE)
+    discounts.load_settings(discounts.settings[0])
+
+    if discounts.show_disclaimer==1:
+        help.page=M_ABOUT
+        tabs.active=M_ABOUT
+    else:
+        tabs.active=M_BONFIRE
 
     while True:
-        if tabs.active not in [M_TABLE,M_HIDDEN_TEST]:
+        if tabs.active not in [M_TABLE,M_HIDDEN_TEST,M_HELP,M_ABOUT]:
             tabs.show_header(s)
         show_page(s,tabs.active)
         tabs.show_footer(s)
@@ -152,6 +179,9 @@ def main(s):
         tabs.active=react_key(s,tabs.active,ch)
         if tabs.active==M_EXIT:
             break
+        if tabs.active==M_WORKSHOP:
+            discounts.update_settings()
+            discounts.save_settings()
         key=c.keyname(ch).decode("utf-8")
         if key=="KEY_F(10)":
             break
