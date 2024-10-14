@@ -6,7 +6,6 @@ import pure_math
 import tabs
 import utils
 import buildings as bs
-import json
 import tests
 
 table_start=0
@@ -172,8 +171,6 @@ def show(s,b):
     s.addch(0,1,c.ACS_LARROW,c.color_pair(ATTENTION_INACTIVE))
     s.addstr(0,2,"]",c.color_pair(INACTIVE_TAB)|c.A_BOLD)
     
-
-    id_len=4
     recipe_n=0
 
     SEL_NONE=0
@@ -205,17 +202,17 @@ def show(s,b):
     s.addstr(0,68,sel_hint,c.color_pair(ATTENTION_INACTIVE))
 
     style=c.color_pair(BK)|c.A_BOLD
-    s.addstr(2,0,"#   |",style)
+    s.addstr(2,0,"#"+(" "*(COL_T_0-1))+"|",style)
     for key,value in recipe.items():
-        s.addstr(2,4+recipe_n*COL_WIDTH,"|"+key,style)
+        s.addstr(2,COL_T_0+recipe_n*COL_WIDTH,"|"+key,style)
         recipe_n+=1
-    s.addstr(2,4+recipe_n*COL_WIDTH,"|",style)
+    s.addstr(2,COL_T_0+recipe_n*COL_WIDTH,"|",style)
     for i in range(table_start,TABLE_MAX+table_start):
         id=f"{i+1}"
         if b["Name"] in color_unlocking_list.keys():
             if i+1==color_unlocking_list[b["Name"]]:
                 id+="*"
-        id+=" "*(id_len-len(id))#filler
+        id+=" "*(COL_T_0-len(id))#filler
         style=0
         inside_selection=False
         if i>=real_sel_b and i<=real_sel_e:
@@ -235,16 +232,26 @@ def show(s,b):
         values=calc_recipe(b,i)
         for j in range(len(values)):
             if values[j]==OVERFLOW:
-                s.addstr(3+(i-table_start),4+j*COL_WIDTH,"|[OVERFLOW] ",style)
+                s.addstr(3+(i-table_start),COL_T_0+j*COL_WIDTH,"|[OVERFLOW] ",style)
             else:
-                s.addstr(3+(i-table_start),4+j*COL_WIDTH,"|"+pure_math.format_num(values[j],float_mode),style)
+                s.addstr(3+(i-table_start),COL_T_0+j*COL_WIDTH,"|"+pure_math.format_num(values[j],float_mode),style)
         s.addstr("|",style)
         if real_sel_b!=-1 and real_sel_e!=-1:#counting sum
-            s.addstr(23,0,"SUM:|",c.color_pair(ATTENTION))
+            summed=real_sel_e-real_sel_b+1
+            summed_str=""
+            if summed<=99:
+                summed_str="("+str(summed)+")"
+            else:
+                if summed<=999:
+                    summed_str=":"+str(summed)
+                else:
+                    summed_str=str(summed)
+            s.addstr(23,0,"SUM"+summed_str,c.color_pair(ATTENTION))
+            s.addstr(23,COL_T_0,"|",c.color_pair(ATTENTION))
             sum=calc_sum_new_style(b,real_sel_b,real_sel_e)
             recipe_n=0
             for i in range(len(sum)):
-                s.addstr(23,4+i*COL_WIDTH,"|"+("[OVERFLOW] " if sum[i]==OVERFLOW else pure_math.format_num(sum[i],float_mode)),c.color_pair(ATTENTION))
+                s.addstr(23,COL_T_0+i*COL_WIDTH,"|"+("[OVERFLOW] " if sum[i]==OVERFLOW else pure_math.format_num(sum[i],float_mode)),c.color_pair(ATTENTION))
             s.addstr("|",c.color_pair(ATTENTION))
             """sum2=calc_sum_old_style(b,real_sel_b,real_sel_e)
 
@@ -349,10 +356,17 @@ def react(s,ch,m):
         #we're in the end of existing selection
         order_sel()
 
-        if (table_cursor+table_start in [table_sel_e,table_sel_e+1]):
+        if table_cursor+table_start == table_sel_e:#remove selection from last, not moving cursor
+            if table_sel_e==table_sel_b:#only one line
+                table_sel_b=table_sel_e=-1
+                return M_TABLE
+            table_sel_e=table_cursor+table_start-1
+            return M_TABLE
+        if table_cursor+table_start == table_sel_e+1:
             table_sel_e=table_cursor+table_start
             move_down()
             return M_TABLE
+
         if table_cursor+table_start==table_sel_b:#reduce selection
             table_sel_b+=1
             move_down()
