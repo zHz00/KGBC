@@ -148,8 +148,8 @@ def main(s):
     c.mouseinterval(0)
     c.curs_set(0)
     ec=c.can_change_color()
-    for i in range(0, curses.COLORS):
-        c.init_pair(i+1, i, c.COLOR_BLUE)
+    #for i in range(0, curses.COLORS):
+        #c.init_pair(i+1, i, c.COLOR_BLUE)
     c.init_pair(ODD_BTN, c.COLOR_WHITE,c.COLOR_CYAN)
     c.init_pair(EVEN_BTN, c.COLOR_CYAN,c.COLOR_WHITE)
     c.init_pair(OTHER_BTN, c.COLOR_BLACK,c.COLOR_WHITE)
