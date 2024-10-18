@@ -30,7 +30,7 @@ def show(s):
     contents_w=c.newwin(PAGE_SIZE,W,BEGIN_Y,BEGIN_X)
     if line==-1:
         try:
-            file=open("help/"+tabs.get_tab_name(page)+".txt","r")
+            file=open("help/"+tabs.get_tab_name(page)+".md","r")
         except:
             utils.show_message("No help file found! -- "+tabs.get_tab_name(page))
             return

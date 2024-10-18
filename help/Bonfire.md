@@ -11,8 +11,7 @@ Alt+Letter   Select building from right two columns
 Upgraded buildings are located in 2nd ant 4th columns.
 
 1..8         Switch tab
-9            Hidden tab for testing
-0            Hidden tab for database rebuild
+0            Hidden tab for testing and database rebuild
 
 #=== MOUSE ===
 

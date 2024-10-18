@@ -18,6 +18,7 @@ import time_void
 import discounts
 import help
 import db
+import pure_math
 
 
 s = None
@@ -83,8 +84,6 @@ def react_key(s,mode,ch):
     probably_tab_mode=ord(letter)-48
     if probably_tab_mode in tabs.modes and mode not in [M_TABLE,M_HIDDEN_TEST,M_HELP,M_ABOUT]:
         return probably_tab_mode
-    if probably_tab_mode==9:
-        return M_HIDDEN_TEST
     if probably_tab_mode==0:
         return M_DATABASE
     if key=="KEY_F(1)" and mode not in [M_HIDDEN_TEST,M_HELP]:
@@ -148,7 +147,13 @@ def main(s):
     c.mouseinterval(0)
     c.curs_set(0)
     ec=c.can_change_color()
+    #v=pure_math.get_unlimited_dr(50,100)
+    #s.clear()
+    #s.addstr(f"unlimited dr:{v}\n")
+    #s.refresh()
+    #s.getch()
     #for i in range(0, curses.COLORS):
+        #s.addstr(f"Color pair: {i};")
         #c.init_pair(i+1, i, c.COLOR_BLUE)
     c.init_pair(ODD_BTN, c.COLOR_WHITE,c.COLOR_CYAN)
     c.init_pair(EVEN_BTN, c.COLOR_CYAN,c.COLOR_WHITE)

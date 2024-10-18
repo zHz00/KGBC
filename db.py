@@ -1,7 +1,13 @@
 import curses as c
-import esprima
 import sqlite3 as sl
 import json
+
+try:
+    import esprima
+    esprima_absent=False
+except ModuleNotFoundError:
+    esprima_absent=True
+
 
 from constants import *
 import tabs
@@ -246,9 +252,14 @@ def parse_db(s):
 
 def show(s):
     fill=' '*(PATH_WIDTH-len(folder))
-    s.addstr(2,11,"A: Folder with KG sources:")
-    s.addstr(3,11,folder+fill,c.color_pair(OTHER_BTN))
-    s.addstr(4,11,"B: Begin")
+    s.addstr(2,11,"DEBUG PAGE. DO NOT USE.",c.color_pair(HELP_BOLD))
+    s.addstr(4,11,"A: Run tests")
+    s.addstr(5,11,"B: Folder with KG sources:")
+    s.addstr(6,11,folder+fill,c.color_pair(OTHER_BTN))
+    s.addstr(7,11,"C: Begin")
+
+    if esprima_absent:
+        s.addstr(8,11,"WARNING! esprima package is absent! No parsing available.",c.color_pair(ATTENTION))
 
 def react(s,ch,m):
     global folder
@@ -269,13 +280,15 @@ def react(s,ch,m):
             letter=key[-1]
 
     if letter=="A":
+        return M_HIDDEN_TEST
+    if letter=="B":
         tabs.active=M_EDIT
         tabs.show_footer(s)
         tabs.active=M_WORKSHOP
         s.keypad(1)
         s.refresh()
         c.curs_set(1)
-        win = c.newwin(1,PATH_WIDTH,3, 11)
+        win = c.newwin(1,PATH_WIDTH,6, 11)
         tb = c.textpad.Textbox(win)
         text = tb.edit(utils.edit_keys)
         c.curs_set(0)
@@ -290,7 +303,16 @@ def react(s,ch,m):
                 folder=text.strip()+"/js/"
     if ch==27:
         return M_BONFIRE
-    if letter=="B":
+    if letter=="C":
+        if esprima_absent:
+            utils.show_message("Install esprima python package!")
+            return M_BONFIRE
+        if len(folder)<5:
+            utils.show_message("Folder must contain '/js/' subfolder.")
+            return M_BONFIRE
+        if os.path.exists(folder+"buildings.js")==False:
+            utils.show_message("No KG sources found!")
+            return M_BONFIRE
         num=0
         while True:
             old_file=KG_DB_FILE+f".{num}.old"
