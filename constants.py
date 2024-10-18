@@ -69,6 +69,9 @@ COL_R_2=54
 
 COL_T_0=7
 
+GLOBAL_W=80
+GLOBAL_H=25
+
 KG_DB_FILE="kg_db.db"
 if __name__=="__main__":
     print("Not main module! ("+__file__+")")

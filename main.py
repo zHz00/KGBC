@@ -198,8 +198,12 @@ def main(s):
         tabs.active=M_BONFIRE
 
     while True:
+        c.update_lines_cols()
+        if c.LINES<25 or c.COLS<80:
+            c.resize_term(25, 80)
         if tabs.active not in [M_TABLE,M_HIDDEN_TEST,M_HELP,M_ABOUT]:
             tabs.show_header(s)
+
         show_page(s,tabs.active)
         tabs.show_footer(s)
         ch=s.getch()
