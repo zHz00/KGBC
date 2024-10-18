@@ -2,18 +2,18 @@
   {
     "name": "dummy",
     "i": 0,
-    "idx": 5,
-    "huts_idx": 4,
+    "idx": 1,
+    "huts_idx": 1,
     "active": [
       0,
       0,
       0,
-      0
+      1
     ],
     "philosopher": 0,
-    "monarchy": 0,
+    "monarchy": 1,
     "bparagon": 0,
-    "elevators": 0,
+    "elevators": 36,
     "challenge_1k": 0,
     "show_disclaimer": 0,
     "result": [
