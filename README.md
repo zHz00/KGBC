@@ -32,9 +32,9 @@ You can scroll it, or you can select several buildings (only subsequent building
 
 ## System requirements
 
--- Linux or Windows
--- Python 3.8 32-bit
--- windows-curses for Windows. Linux already have curses package preinstalled.
+-- Linux or Windows\\
+-- Python 3.8 32-bit\\
+-- windows-curses for Windows. Linux already have curses package preinstalled.\\
 -- esprima (optional). If you don't have that, you can use program as normal, but you can't rebuild database.
 
 Program have PyInstaller binaries, so you can just download it and run.
