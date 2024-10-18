@@ -155,6 +155,10 @@ def main(s):
     #for i in range(0, curses.COLORS):
         #s.addstr(f"Color pair: {i};")
         #c.init_pair(i+1, i, c.COLOR_BLUE)
+    if c.COLORS<16:
+        b=0#brighness bit
+    else:
+        b=8
     c.init_pair(ODD_BTN, c.COLOR_WHITE,c.COLOR_CYAN)
     c.init_pair(EVEN_BTN, c.COLOR_CYAN,c.COLOR_WHITE)
     c.init_pair(OTHER_BTN, c.COLOR_BLACK,c.COLOR_WHITE)
@@ -162,22 +166,22 @@ def main(s):
     c.init_pair(INACTIVE_TAB, c.COLOR_WHITE,c.COLOR_BLACK)
     c.init_pair(BK,c.COLOR_WHITE,c.COLOR_BLUE)
     c.init_pair(BK_CURSOR,c.COLOR_BLUE,c.COLOR_WHITE)
-    c.init_pair(ATTENTION,c.COLOR_RED|8,c.COLOR_BLUE)
-    c.init_pair(ATTENTION_INACTIVE,c.COLOR_RED|8,c.COLOR_BLACK)
+    c.init_pair(ATTENTION,c.COLOR_RED|b,c.COLOR_BLUE)
+    c.init_pair(ATTENTION_INACTIVE,c.COLOR_RED|b,c.COLOR_BLACK)
     c.init_pair(SEL_LINE,c.COLOR_YELLOW,c.COLOR_BLUE)
-    c.init_pair(BK_CURSOR_SEL,c.COLOR_YELLOW|8,c.COLOR_WHITE)
-    c.init_pair(BK_SEL,c.COLOR_YELLOW|8,c.COLOR_BLUE)
-    c.init_pair(BUILDING_HEADER,c.COLOR_YELLOW|8,c.COLOR_BLACK)
+    c.init_pair(BK_CURSOR_SEL,c.COLOR_YELLOW|b,c.COLOR_WHITE)
+    c.init_pair(BK_SEL,c.COLOR_YELLOW|b,c.COLOR_BLUE)
+    c.init_pair(BUILDING_HEADER,c.COLOR_YELLOW|b,c.COLOR_BLACK)
     c.init_pair(KEY,c.COLOR_YELLOW,c.COLOR_BLACK)
-    c.init_pair(TEST_OK,c.COLOR_GREEN|8,c.COLOR_BLUE)
-    c.init_pair(TEST_FAIL,c.COLOR_RED|8,c.COLOR_BLUE)
+    c.init_pair(TEST_OK,c.COLOR_GREEN|b,c.COLOR_BLUE)
+    c.init_pair(TEST_FAIL,c.COLOR_RED|b,c.COLOR_BLUE)
     c.init_pair(BK_ALT,c.COLOR_YELLOW,c.COLOR_BLUE)
-    c.init_pair(RATIO_INFO,c.COLOR_CYAN|8,c.COLOR_BLUE)
+    c.init_pair(RATIO_INFO,c.COLOR_CYAN|b,c.COLOR_BLUE)
 
-    c.init_pair(HELP_NORMAL,c.COLOR_BLACK|8,c.COLOR_BLACK)
-    c.init_pair(HELP_HEADER,c.COLOR_WHITE|8,c.COLOR_BLACK)
-    c.init_pair(HELP_BOLD,c.COLOR_MAGENTA|8,c.COLOR_BLACK)
-    c.init_pair(HELP_ITALIC,c.COLOR_CYAN|8,c.COLOR_BLACK)
+    c.init_pair(HELP_NORMAL,c.COLOR_BLACK|b,c.COLOR_BLACK)
+    c.init_pair(HELP_HEADER,c.COLOR_WHITE|b,c.COLOR_BLACK)
+    c.init_pair(HELP_BOLD,c.COLOR_MAGENTA|b,c.COLOR_BLACK)
+    c.init_pair(HELP_ITALIC,c.COLOR_CYAN|b,c.COLOR_BLACK)
     c.init_pair(HELP_NAME,c.COLOR_YELLOW,c.COLOR_BLACK)
 
     s.bkgd(' ',c.color_pair(BK))
