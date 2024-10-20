@@ -66,9 +66,9 @@ def show_footer(s):
     if active==M_WORKSHOP:
         hint="F1:Help|F10:Exit|Esc:To Bonfire|1..8:Select tab|Letters:Select option"
     if active==M_BONFIRE:
-        hint="F1:Help|F10:Exit|1..8:Select tab|Letters with Ctrl or Alt:Select building"
+        hint="F1:Help|F10:Exit|1..8:Select tab|Ctrl or Alt+Letter:Select building|Tab:Theme"
     if active in [M_RELIGION,M_SPACE,M_TIME,M_TRADE]:
-        hint="F1:Help|F10:Exit|1..8:Select tab|Letters:Select building"
+        hint="F1:Help|F10:Exit|1..8:Select tab|Letters:Select building|Tab:Theme"
     if active==M_HIDDEN_TEST:
         hint="No Help|F10:Exit|Space:Next page|Esc:Abort"
     if active==M_DATABASE:

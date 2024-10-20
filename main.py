@@ -19,6 +19,7 @@ import discounts
 import help
 import db
 import pure_math
+import utils
 
 theme_idx=0
 themes=[]
@@ -26,7 +27,7 @@ themes.append([c.COLOR_WHITE,c.COLOR_CYAN,c.COLOR_CYAN,c.COLOR_WHITE])
 themes.append([c.COLOR_BLACK,c.COLOR_CYAN,c.COLOR_CYAN,c.COLOR_BLACK])
 themes.append([c.COLOR_WHITE,c.COLOR_YELLOW,c.COLOR_YELLOW,c.COLOR_WHITE])
 themes.append([c.COLOR_BLACK,c.COLOR_YELLOW,c.COLOR_YELLOW,c.COLOR_BLACK])
-themes.append([c.COLOR_WHITE,c.COLOR_BLACK,c.COLOR_BLACK,c.COLOR_WHITE])
+themes.append([c.COLOR_BLACK,c.COLOR_WHITE,c.COLOR_WHITE,c.COLOR_BLACK])
 
 
 
@@ -130,7 +131,15 @@ def react_key(s,mode,ch,alt_ch):
     if mode==M_DATABASE:
         return db.react(s,ch,m,alt_ch)
 
-    
+def restore_size():
+    c.update_lines_cols()
+    if c.LINES<25 or c.COLS<80:
+        c.resize_term(25, 80)
+        c.update_lines_cols()
+        if c.LINES<25 or c.COLS<80:
+            utils.show_message("Cannot resize terminal! 80x25 is a minimum!")
+            print("Cannot resize terminal! 80x25 is a minimum!")
+            exit(1)
 
 def main(s):
     db_link=sl.connect(KG_DB_FILE)
@@ -221,9 +230,7 @@ def main(s):
         tabs.active=M_BONFIRE
 
     while True:
-        c.update_lines_cols()
-        if c.LINES<25 or c.COLS<80:
-            c.resize_term(25, 80)
+        restore_size()
         if tabs.active not in [M_TABLE,M_HIDDEN_TEST,M_HELP,M_ABOUT]:
             tabs.show_header(s)
 
@@ -235,6 +242,7 @@ def main(s):
             s.nodelay(True)
             alt_ch=s.getch()
             s.nodelay(False)
+        restore_size()
         tabs.active=react_key(s,tabs.active,ch,alt_ch)
         if tabs.active==M_EXIT:
             break

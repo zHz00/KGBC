@@ -60,7 +60,7 @@ def react(s,ch,m,alt_ch):
                 result=b["Name"]
                 bs.b_selected=b
                 break
-    s.addstr(24,0,result,c.color_pair(OTHER_BTN))
+    #s.addstr(24,0,result,c.color_pair(OTHER_BTN))
     if result!="[NONE]":
         table.reset_table()
         return M_TABLE

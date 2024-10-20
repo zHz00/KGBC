@@ -168,8 +168,8 @@ def show(s,b):
     s.chgat(c.color_pair(RATIO_INFO))
     s.addstr(1,40,base_discount_info,c.color_pair(RATIO_INFO))
     s.addstr(0,0,"[",c.color_pair(INACTIVE_TAB)|c.A_BOLD)
-    s.addch(0,1,c.ACS_LARROW,c.color_pair(ATTENTION_INACTIVE))
-    s.addstr(0,2,"]",c.color_pair(INACTIVE_TAB)|c.A_BOLD)
+    s.addstr(0,1,"<-",c.color_pair(ATTENTION_INACTIVE))
+    s.addstr(0,3,"]",c.color_pair(INACTIVE_TAB)|c.A_BOLD)
     
     recipe_n=0
 
@@ -301,7 +301,7 @@ def react(s,ch,m,alt_ch):
         if m[4]&c.BUTTON3_PRESSED:
             return tabs.get_tab(bs.b_selected)
     if x_mouse!=0 or y_mouse!=0:
-        if y_mouse==0 and x_mouse in [0,1,2]:
+        if y_mouse==0 and x_mouse in [0,1,2,3]:
             return tabs.get_tab(bs.b_selected)
         if y_mouse-3<TABLE_MAX and y_mouse>=3 and m[4]&c.BUTTON1_PRESSED:
             table_cursor=y_mouse-3
