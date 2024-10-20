@@ -23,10 +23,11 @@ import pure_math
 theme_idx=0
 themes=[]
 themes.append([c.COLOR_WHITE,c.COLOR_CYAN,c.COLOR_CYAN,c.COLOR_WHITE])
+themes.append([c.COLOR_BLACK,c.COLOR_CYAN,c.COLOR_CYAN,c.COLOR_BLACK])
+themes.append([c.COLOR_WHITE,c.COLOR_YELLOW,c.COLOR_YELLOW,c.COLOR_WHITE])
 themes.append([c.COLOR_BLACK,c.COLOR_YELLOW,c.COLOR_YELLOW,c.COLOR_BLACK])
 themes.append([c.COLOR_WHITE,c.COLOR_BLACK,c.COLOR_BLACK,c.COLOR_WHITE])
-themes.append([c.COLOR_WHITE,c.COLOR_GREEN,c.COLOR_GREEN,c.COLOR_WHITE])
-themes.append([c.COLOR_WHITE,c.COLOR_YELLOW,c.COLOR_YELLOW,c.COLOR_WHITE])
+
 
 
 s = None
@@ -90,7 +91,7 @@ def react_key(s,mode,ch,alt_ch):
                 else:
                     return M_EXIT
 
-    if letter=='I' and ctrl==True:#Tab
+    if letter=='I' and ctrl==True and mode!=M_TABLE:#Tab
         theme_idx=(theme_idx+1)%(len(themes))
         c.init_pair(ODD_BTN, themes[theme_idx][0],themes[theme_idx][1])
         c.init_pair(EVEN_BTN, themes[theme_idx][2],themes[theme_idx][3])
