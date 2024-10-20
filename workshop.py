@@ -70,7 +70,7 @@ def show(s):
         #s.addstr("TEST ",c.color_pair(i))
     
 
-def react(s,ch,m):
+def react(s,ch,m,alt_ch):
     key=""
     key=c.keyname(ch).decode("utf-8")
     key=key.upper()

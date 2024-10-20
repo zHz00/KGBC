@@ -169,7 +169,7 @@ def print_result(s,t):
         s.addstr("\n"+("="*78)+"\n")
         return 0
 
-def react(s,ch,m):
+def react(s,ch,m,alt_ch):
     global page
     if ch==ord(" "):
         page+=1

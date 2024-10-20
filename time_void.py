@@ -43,7 +43,7 @@ def show(s):
         s.addstr(y,x,letter+":"+b["Name"]+filler,tabs.gen_attr(y,x))
         cur_b+=1
 
-def react(s,ch,m):
+def react(s,ch,m,alt_ch):
     key=""
     key=c.keyname(ch).decode("utf-8")
     key=key.upper()

@@ -105,7 +105,7 @@ def show(s):
     w.refresh()
     contents_w.refresh()
 
-def react(s,ch,m):
+def react(s,ch,m,alt_ch):
     global page,w,contents_w,line
     if line==-1:
         ch=27#exit if file not found

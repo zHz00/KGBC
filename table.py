@@ -264,7 +264,7 @@ def show(s,b):
 
 
 
-def react(s,ch,m):
+def react(s,ch,m,alt_ch):
     global table_cursor
     global table_sel_b
     global table_sel_e
@@ -375,7 +375,7 @@ def react(s,ch,m):
         #now we have case with existing selection
         return M_TABLE
 
-    if letter=='I' and ctrl==True:#workd on windows for tab
+    if letter=='I' and ctrl==True:#worked on windows for tab
         if float_mode==FLOAT_KG:
             float_mode=FLOAT_SCI
         else:

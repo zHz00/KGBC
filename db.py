@@ -261,7 +261,7 @@ def show(s):
     if esprima_absent:
         s.addstr(8,11,"WARNING! esprima package is absent! No parsing available.",c.color_pair(ATTENTION))
 
-def react(s,ch,m):
+def react(s,ch,m,alt_ch):
     global folder
     key=""
     key=c.keyname(ch).decode("utf-8")

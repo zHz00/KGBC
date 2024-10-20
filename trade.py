@@ -25,7 +25,7 @@ def show(s):
 
     s.addstr(5+cur_b,start_x,"Base discount: "+("-15%" if discounts.policies_active[3]==1 else "0%"))
 
-def react(s,ch,m):
+def react(s,ch,m,alt_ch):
     key=""
     key=c.keyname(ch).decode("utf-8")
     key=key.upper()

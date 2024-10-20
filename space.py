@@ -38,7 +38,7 @@ def show(s):
                     s.addstr(f"Oil: -{round((1-discounts.get_space_oil_mul())*100,1)}%")
             cur_b+=1
 
-def react(s,ch,m):
+def react(s,ch,m,alt_ch):
     key=""
     key=c.keyname(ch).decode("utf-8")
     key=key.upper()

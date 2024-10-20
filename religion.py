@@ -78,7 +78,7 @@ def show(s):
         cur_b+=1
         cur_str+=1
 
-def react(s,ch,m):
+def react(s,ch,m,alt_ch):
     key=""
     key=c.keyname(ch).decode("utf-8")
     key=key.upper()

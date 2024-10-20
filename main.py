@@ -20,6 +20,13 @@ import help
 import db
 import pure_math
 
+theme_idx=0
+theme0=[c.COLOR_WHITE,c.COLOR_CYAN,c.COLOR_CYAN,c.COLOR_WHITE]
+theme1=[c.COLOR_WHITE,c.COLOR_BLACK,c.COLOR_BLACK,c.COLOR_WHITE]
+theme2=[c.COLOR_WHITE,c.COLOR_GREEN,c.COLOR_GREEN,c.COLOR_WHITE]
+theme3=[c.COLOR_WHITE,c.COLOR_YELLOW,c.COLOR_YELLOW,c.COLOR_WHITE]
+themes=[theme0,theme1,theme2,theme3]
+
 
 s = None
 keys=""
@@ -48,7 +55,8 @@ def show_page(s,mode):
         db.show(s)
     s.refresh()
 
-def react_key(s,mode,ch):
+def react_key(s,mode,ch,alt_ch):
+    global theme_idx
     key=""
     key=c.keyname(ch).decode("utf-8")
     key=key.upper()
@@ -81,6 +89,12 @@ def react_key(s,mode,ch):
                 else:
                     return M_EXIT
 
+    if letter=='I' and ctrl==True:#Tab
+        theme_idx=(theme_idx+1)%(len(themes))
+        c.init_pair(ODD_BTN, themes[theme_idx][0],themes[theme_idx][1])
+        c.init_pair(EVEN_BTN, themes[theme_idx][2],themes[theme_idx][3])
+        return mode
+
     probably_tab_mode=ord(letter)-48
     if probably_tab_mode in tabs.modes and mode not in [M_TABLE,M_HIDDEN_TEST,M_HELP,M_ABOUT]:
         return probably_tab_mode
@@ -94,25 +108,25 @@ def react_key(s,mode,ch):
         help.line=-1
         return M_ABOUT
     if mode==M_BONFIRE:
-        return bonfire.react(s,ch,m)
+        return bonfire.react(s,ch,m,alt_ch)
     if mode==M_SPACE:
-        return space.react(s,ch,m)
+        return space.react(s,ch,m,alt_ch)
     if mode==M_TIME:
-        return time_void.react(s,ch,m)
+        return time_void.react(s,ch,m,alt_ch)
     if mode==M_TRADE:
-        return trade.react(s,ch,m)
+        return trade.react(s,ch,m,alt_ch)
     if mode==M_RELIGION:
-        return religion.react(s,ch,m)
+        return religion.react(s,ch,m,alt_ch)
     if mode==M_TABLE:
-        return table.react(s,ch,m)
+        return table.react(s,ch,m,alt_ch)
     if mode==M_WORKSHOP:
-        return workshop.react(s,ch,m)
+        return workshop.react(s,ch,m,alt_ch)
     if mode==M_HIDDEN_TEST:
-        return tests.react(s,ch,m)
+        return tests.react(s,ch,m,alt_ch)
     if mode in [M_HELP,M_ABOUT]:
-        return help.react(s,ch,m)
+        return help.react(s,ch,m,alt_ch)
     if mode==M_DATABASE:
-        return db.react(s,ch,m)
+        return db.react(s,ch,m,alt_ch)
 
     
 
@@ -159,8 +173,8 @@ def main(s):
         b=0#brighness bit
     else:
         b=8
-    c.init_pair(ODD_BTN, c.COLOR_WHITE,c.COLOR_CYAN)
-    c.init_pair(EVEN_BTN, c.COLOR_CYAN,c.COLOR_WHITE)
+    c.init_pair(ODD_BTN, themes[theme_idx][0],themes[theme_idx][1])
+    c.init_pair(EVEN_BTN, themes[theme_idx][2],themes[theme_idx][3])
     c.init_pair(OTHER_BTN, c.COLOR_BLACK,c.COLOR_WHITE)
     c.init_pair(SEL_TAB, c.COLOR_BLACK,c.COLOR_WHITE)
     c.init_pair(INACTIVE_TAB, c.COLOR_WHITE,c.COLOR_BLACK)
@@ -178,7 +192,10 @@ def main(s):
     c.init_pair(BK_ALT,c.COLOR_YELLOW,c.COLOR_BLUE)
     c.init_pair(RATIO_INFO,c.COLOR_CYAN|b,c.COLOR_BLUE)
 
-    c.init_pair(HELP_NORMAL,c.COLOR_BLACK|b,c.COLOR_BLACK)
+    if b!=0:
+        c.init_pair(HELP_NORMAL,c.COLOR_BLACK|b,c.COLOR_BLACK)
+    else:
+        c.init_pair(HELP_NORMAL,c.COLOR_WHITE,c.COLOR_BLACK)#black on black: not visible
     c.init_pair(HELP_HEADER,c.COLOR_WHITE|b,c.COLOR_BLACK)
     c.init_pair(HELP_BOLD,c.COLOR_MAGENTA|b,c.COLOR_BLACK)
     c.init_pair(HELP_ITALIC,c.COLOR_CYAN|b,c.COLOR_BLACK)
@@ -207,7 +224,12 @@ def main(s):
         show_page(s,tabs.active)
         tabs.show_footer(s)
         ch=s.getch()
-        tabs.active=react_key(s,tabs.active,ch)
+        alt_ch=-1
+        if ch==27:
+            s.nodelay(True)
+            alt_ch=s.getch()
+            s.nodelay(False)
+        tabs.active=react_key(s,tabs.active,ch,alt_ch)
         if tabs.active==M_EXIT:
             break
         if tabs.active==M_WORKSHOP:

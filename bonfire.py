@@ -54,7 +54,7 @@ def show(s):
     s.addstr(23,x,f"Global discount: {round(discounts.global_values[discounts.global_idx],3)}%")
     s.refresh()
 
-def react(s,ch,m):
+def react(s,ch,m,alt_ch):
     key=""
     key=c.keyname(ch).decode("utf-8")
     key=key.upper()
@@ -70,6 +70,9 @@ def react(s,ch,m):
         if key.startswith("ALT_") or key.startswith("M-"):
             alt=True
             letter=key[-1]
+        if alt_ch!=-1:
+            alt=True
+            letter=chr(alt_ch)
     x_mouse=0
     y_mouse=0
     if m!=None:
