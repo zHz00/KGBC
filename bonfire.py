@@ -72,7 +72,8 @@ def react(s,ch,m,alt_ch):
             letter=key[-1]
         if alt_ch!=-1:
             alt=True
-            letter=chr(alt_ch)
+            ctrl=False
+            letter=chr(alt_ch).upper()
     x_mouse=0
     y_mouse=0
     if m!=None:

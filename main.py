@@ -21,11 +21,12 @@ import db
 import pure_math
 
 theme_idx=0
-theme0=[c.COLOR_WHITE,c.COLOR_CYAN,c.COLOR_CYAN,c.COLOR_WHITE]
-theme1=[c.COLOR_WHITE,c.COLOR_BLACK,c.COLOR_BLACK,c.COLOR_WHITE]
-theme2=[c.COLOR_WHITE,c.COLOR_GREEN,c.COLOR_GREEN,c.COLOR_WHITE]
-theme3=[c.COLOR_WHITE,c.COLOR_YELLOW,c.COLOR_YELLOW,c.COLOR_WHITE]
-themes=[theme0,theme1,theme2,theme3]
+themes=[]
+themes.append([c.COLOR_WHITE,c.COLOR_CYAN,c.COLOR_CYAN,c.COLOR_WHITE])
+themes.append([c.COLOR_BLACK,c.COLOR_YELLOW,c.COLOR_YELLOW,c.COLOR_BLACK])
+themes.append([c.COLOR_WHITE,c.COLOR_BLACK,c.COLOR_BLACK,c.COLOR_WHITE])
+themes.append([c.COLOR_WHITE,c.COLOR_GREEN,c.COLOR_GREEN,c.COLOR_WHITE])
+themes.append([c.COLOR_WHITE,c.COLOR_YELLOW,c.COLOR_YELLOW,c.COLOR_WHITE])
 
 
 s = None
@@ -179,11 +180,15 @@ def main(s):
     c.init_pair(SEL_TAB, c.COLOR_BLACK,c.COLOR_WHITE)
     c.init_pair(INACTIVE_TAB, c.COLOR_WHITE,c.COLOR_BLACK)
     c.init_pair(BK,c.COLOR_WHITE,c.COLOR_BLUE)
-    c.init_pair(BK_CURSOR,c.COLOR_BLUE,c.COLOR_WHITE)
     c.init_pair(ATTENTION,c.COLOR_RED|b,c.COLOR_BLUE)
     c.init_pair(ATTENTION_INACTIVE,c.COLOR_RED|b,c.COLOR_BLACK)
     c.init_pair(SEL_LINE,c.COLOR_YELLOW,c.COLOR_BLUE)
-    c.init_pair(BK_CURSOR_SEL,c.COLOR_YELLOW|b,c.COLOR_WHITE)
+    if b!=0:
+        c.init_pair(BK_CURSOR_SEL,c.COLOR_YELLOW|b,c.COLOR_WHITE)
+        c.init_pair(BK_CURSOR,c.COLOR_BLUE,c.COLOR_WHITE)
+    else:
+        c.init_pair(BK_CURSOR_SEL,c.COLOR_YELLOW|b,c.COLOR_BLACK)
+        c.init_pair(BK_CURSOR,c.COLOR_WHITE,c.COLOR_BLACK)
     c.init_pair(BK_SEL,c.COLOR_YELLOW|b,c.COLOR_BLUE)
     c.init_pair(BUILDING_HEADER,c.COLOR_YELLOW|b,c.COLOR_BLACK)
     c.init_pair(KEY,c.COLOR_YELLOW,c.COLOR_BLACK)
