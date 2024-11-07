@@ -19,6 +19,7 @@ policies_desc=["-20% gold base prices","-50% log house base price","-30% factory
 policies_active=[0,0,0,0]
 
 show_disclaimer=1#this is best place for this variable. show disclaimer on startup
+theme=0
 
 philosofer=0
 monrachy=0
@@ -32,7 +33,7 @@ SETTINGS_FILE="kgbc_settings.txt"
 space_oil_list=["Satellite","Space St.","Lunar Outpost","Moon Base"]
 
 def load_settings(t)->None:
-    global global_idx,huts_idx,policies_active,philosofer,monrachy,bparagon,elevators,challenge_1k,show_disclaimer
+    global global_idx,huts_idx,policies_active,philosofer,monrachy,bparagon,elevators,challenge_1k,show_disclaimer,theme
 
     global_idx=t['idx']
     huts_idx=t['huts_idx']
@@ -43,6 +44,7 @@ def load_settings(t)->None:
     elevators=t['elevators']
     challenge_1k=t['challenge_1k']
     show_disclaimer=t['show_disclaimer']
+    theme=t['theme']
 
 def save_settings():
     tests.save_tests(SETTINGS_FILE,settings)

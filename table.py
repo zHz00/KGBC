@@ -308,11 +308,13 @@ def react(s,ch,m,alt_ch):
         if y_mouse<3 and m[4]&c.BUTTON1_PRESSED:
             table_sel_b=-1
             table_sel_e=-1
-        if y_mouse-3<TABLE_MAX and y_mouse>=3 and m[4]&c.BUTTON1_DOUBLE_CLICKED:
+        if y_mouse-3<TABLE_MAX and y_mouse>=3 and (m[4]&c.BUTTON1_DOUBLE_CLICKED or m[4]&c.BUTTON2_PRESSED):
             if table_sel_b==-1 or (table_sel_b!=-1 and table_sel_e!=-1):#selection had zero or two coordinates: resetting
+                table_cursor=y_mouse-3
                 table_sel_b=(y_mouse-3)+table_start
                 table_sel_e=-1
             else:
+                table_cursor=y_mouse-3
                 table_sel_e=(y_mouse-3)+table_start
     if letter=="+":
         tests.tests_list.append(tests.make_test(bs.b_selected,table_start+table_cursor))
@@ -343,6 +345,8 @@ def react(s,ch,m,alt_ch):
     if key=="KEY_HOME":
         table_start=0
         table_cursor=0
+    if key=="KEY_END":
+        table_start+=TABLE_MAX*5#100 by default
     if key=="KEY_IC":#insert
         if table_sel_b==-1:#no selection
             table_sel_b=table_cursor+table_start
@@ -365,6 +369,10 @@ def react(s,ch,m,alt_ch):
         if table_cursor+table_start == table_sel_e+1:
             table_sel_e=table_cursor+table_start
             move_down()
+            return M_TABLE
+        
+        if table_cursor+table_start == table_sel_b-1:
+            table_sel_b=table_cursor+table_start
             return M_TABLE
 
         if table_cursor+table_start==table_sel_b:#reduce selection

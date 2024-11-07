@@ -15,7 +15,8 @@
     "bparagon": 0,
     "elevators": 0,
     "challenge_1k": 0,
-    "show_disclaimer": 1,
+    "show_disclaimer": 0,
+    "theme": 0,
     "result": [
       0.0
     ]

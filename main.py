@@ -21,7 +21,6 @@ import db
 import pure_math
 import utils
 
-theme_idx=0
 themes=[]
 themes.append([c.COLOR_WHITE,c.COLOR_CYAN,c.COLOR_CYAN,c.COLOR_WHITE])
 themes.append([c.COLOR_BLACK,c.COLOR_CYAN,c.COLOR_CYAN,c.COLOR_BLACK])
@@ -93,9 +92,11 @@ def react_key(s,mode,ch,alt_ch):
                     return M_EXIT
 
     if letter=='I' and ctrl==True and mode!=M_TABLE:#Tab
-        theme_idx=(theme_idx+1)%(len(themes))
-        c.init_pair(ODD_BTN, themes[theme_idx][0],themes[theme_idx][1])
-        c.init_pair(EVEN_BTN, themes[theme_idx][2],themes[theme_idx][3])
+        discounts.theme=(discounts.theme+1)%(len(themes))
+        c.init_pair(ODD_BTN, themes[discounts.theme][0],themes[discounts.theme][1])
+        c.init_pair(EVEN_BTN, themes[discounts.theme][2],themes[discounts.theme][3])
+        discounts.update_settings()
+        discounts.save_settings()
         return mode
 
     probably_tab_mode=ord(letter)-48
@@ -103,7 +104,7 @@ def react_key(s,mode,ch,alt_ch):
         return probably_tab_mode
     if probably_tab_mode==0:
         return M_DATABASE
-    if key=="KEY_F(1)" and mode not in [M_HIDDEN_TEST,M_HELP]:
+    if key=="KEY_F(1)" and mode not in [M_HIDDEN_TEST,M_HELP,M_DATABASE]:
         help.page=mode
         return M_HELP
     if key=="KEY_F(1)" and mode==M_HELP:
@@ -167,13 +168,16 @@ def main(s):
             max_r=len(b["Recipe"])
     #max recipe len == 6, for moon base and lunar outpost
 
+    discounts.settings=tests.load_tests(discounts.SETTINGS_FILE)
+    discounts.load_settings(discounts.settings[0])
+
     c.raw()
     c.mousemask(-1)
     c.mouseinterval(0)
     c.curs_set(0)
     ec=c.can_change_color()
-    #v=pure_math.get_unlimited_dr(50,100)
-    #s.clear()
+    v=pure_math.get_unlimited_dr(52,100)
+    s.clear()
     #s.addstr(f"unlimited dr:{v}\n")
     #s.refresh()
     #s.getch()
@@ -184,8 +188,8 @@ def main(s):
         b=0#brighness bit
     else:
         b=8
-    c.init_pair(ODD_BTN, themes[theme_idx][0],themes[theme_idx][1])
-    c.init_pair(EVEN_BTN, themes[theme_idx][2],themes[theme_idx][3])
+    c.init_pair(ODD_BTN, themes[discounts.theme][0],themes[discounts.theme][1])
+    c.init_pair(EVEN_BTN, themes[discounts.theme][2],themes[discounts.theme][3])
     c.init_pair(OTHER_BTN, c.COLOR_BLACK,c.COLOR_WHITE)
     c.init_pair(SEL_TAB, c.COLOR_BLACK,c.COLOR_WHITE)
     c.init_pair(INACTIVE_TAB, c.COLOR_WHITE,c.COLOR_BLACK)
@@ -219,9 +223,6 @@ def main(s):
     s.bkgd(' ',c.color_pair(BK))
     s.clear()
     s.refresh()
-
-    discounts.settings=tests.load_tests(discounts.SETTINGS_FILE)
-    discounts.load_settings(discounts.settings[0])
 
     if discounts.show_disclaimer==1:
         help.page=M_ABOUT

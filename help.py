@@ -89,10 +89,7 @@ def show(s):
                     mode=HELP_HEADER
                     prev_ch=ln[ch]
                     continue
-                if ch_counter<W-1:
-                    contents_w.addstr(ln[ch],c.color_pair(mode))
-                else:
-                    ln=ln#for breakpoints during debugging
+                contents_w.addstr(ln[ch],c.color_pair(mode))
                 ch_counter+=1
                 prev_ch=ln[ch]
     if len(contents_lines)>0:

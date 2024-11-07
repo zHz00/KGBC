@@ -27,7 +27,8 @@ kg_defaults={
     'elevators':0,
     'challenge_1k':0,
     'result':[10.0],
-    'show_disclaimer':1
+    'show_disclaimer':1,
+    'theme':0
 }
 
 def save_tests(file:str,t_list)->None:
@@ -67,6 +68,10 @@ def load_tests(file:str)->None:
                 test["show_disclaimer"]=1
             else:
                 test["show_disclaimer"]=t["show_disclaimer"]
+            if "theme" not in t.keys():
+                test["theme"]=1
+            else:
+                test["theme"]=t["theme"]
     return tests_list_ordered
 
 def show_hidden_test(s):
@@ -104,6 +109,7 @@ def make_test(b,i):
     test["elevators"]=discounts.elevators
     test["challenge_1k"]=discounts.challenge_1k
     test["show_disclaimer"]=discounts.show_disclaimer
+    test["theme"]=discounts.theme
     if b!=None:
         test["result"]=table.calc_recipe(b,i)
     else:

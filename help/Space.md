@@ -9,11 +9,12 @@ F1           Show help
 F10          Exit
 Letter       Select building
 
+Tab          Change color scheme
 1..8         Switch tab
 
 #=== MOUSE ===
 
-You can use mouse both to select buildings and tab.
+You can use mouse to select buildings or switch tabs.
 Red cross: Exit
 
 #=== INFORMATION ===
@@ -26,5 +27,8 @@ It is controlled by number of _Space Elevators_. This
 number can be set in **Workshop** tab. In right side of
 the screen is displayed aforementioned number and final
 discount.
+
+Discount formula is explained int **Workshop help**
+section.
 
 <END>

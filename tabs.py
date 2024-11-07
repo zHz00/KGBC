@@ -72,7 +72,7 @@ def show_footer(s):
     if active==M_HIDDEN_TEST:
         hint="No Help|F10:Exit|Space:Next page|Esc:Abort"
     if active==M_DATABASE:
-        hint="No Help|F10:Exit|A:Select folder|B:Parse sources|Esc:Cancel"
+        hint="No Help|F10:Exit|A:Run tests|B:Select folder|C:Parse sources|Esc:Cancel"
     s.move(24,0)
     key=True
     for ch in hint:
