@@ -70,10 +70,10 @@ def react(s,ch,m,alt_ch):
         if key.startswith("ALT_") or key.startswith("M-"):
             alt=True
             letter=key[-1]
-        if alt_ch!=-1:
+        if alt_ch!="":
             alt=True
             ctrl=False
-            letter=chr(alt_ch).upper()
+            letter=alt_ch.upper()
     x_mouse=0
     y_mouse=0
     if m!=None:

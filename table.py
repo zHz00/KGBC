@@ -388,7 +388,7 @@ def react(s,ch,m,alt_ch):
             float_mode=FLOAT_SCI
         else:
             float_mode=FLOAT_KG
-    if (letter=='[' and ctrl==True and alt_ch==-1) or key=="KEY_BACKSPACE" or key=="^H":
+    if (letter=='[' and ctrl==True and alt_ch=="") or key=="KEY_BACKSPACE" or key=="^H":
         return tabs.get_tab(bs.b_selected)
     if (letter=="[" and ctrl==False) or letter=="]":
         if table_sel_b==-1 or (table_sel_b!=-1 and table_sel_e!=-1):#selection had zero or two coordinates: resetting

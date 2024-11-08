@@ -244,13 +244,17 @@ def main(s):
         show_page(s,tabs.active)
         tabs.show_footer(s)
         ch=s.getch()
-        alt_ch=-1
+        alt_ch=""
         if ch==27:
             s.nodelay(True)
-            alt_ch=s.getch()
+            next_key=s.getch()
+            if next_key!=-1:
+                alt_ch=c.keyname(next_key).decode("utf8")
+            else:
+                alt_ch=""
             if alt_ch=="[":#home and end keys
                 for i in range(2):
-                    alt_ch+=s.getch()
+                    alt_ch+=c.keyname(s.getch()).decode("utf8")
             s.nodelay(False)
         restore_size()
         tabs.active=react_key(s,tabs.active,ch,alt_ch)
