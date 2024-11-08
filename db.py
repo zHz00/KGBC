@@ -1,6 +1,7 @@
 import curses as c
 import sqlite3 as sl
 import json
+import os
 
 try:
     import esprima
@@ -8,17 +9,21 @@ try:
 except ModuleNotFoundError:
     esprima_absent=True
 
-
 from constants import *
 import tabs
 import utils
-import os
+import pure_math
 
 
 folder=""
 log=None
 groups_names=[]
 groups_contents=[]
+
+test_value=0
+test_stripe=0
+test_effect=0
+test_limit=0
 
 def get_label(label):
     jsfile="../res/i18n/en.json"
@@ -252,17 +257,58 @@ def parse_db(s):
 
 def show(s):
     fill=' '*(PATH_WIDTH-len(folder))
-    s.addstr(2,11,"DEBUG PAGE. DO NOT USE.",c.color_pair(HELP_BOLD))
-    s.addstr(4,11,"A: Run tests")
-    s.addstr(5,11,"B: Folder with KG sources:")
-    s.addstr(6,11,folder+fill,c.color_pair(OTHER_BTN))
-    s.addstr(7,11,"C: Begin")
+    test_udr=pure_math.get_unlimited_dr(test_value,test_stripe)
+    test_ldr=pure_math.get_limited_dr(test_effect,test_limit)
+    s.addstr(2,COL_D_0,"DEBUG PAGE. DO NOT USE.",c.color_pair(HELP_BOLD))
+    s.addstr(4,COL_D_0,"A: Run tests")
+    s.addstr(5,COL_D_0,"B: Folder with KG sources:")
+    s.addstr(6,COL_D_0,folder+fill,c.color_pair(OTHER_BTN))
+    s.addstr(7,COL_D_0,"C: Rebuild database (old one will be preserved)")
+    s.addstr(8,COL_D_0,"D: Test keys")
+    s.addstr(10,COL_D_0,f"Unlimited DR Test: {test_udr}")
+    fill=' '*(EDIT_WIDTH-len(str(test_value)))
+    s.addstr(11,COL_D_0,"E: Value:")
+    s.addstr(11,COL_D_1,f"{test_value}"+fill,c.color_pair(OTHER_BTN))
+    fill=' '*(EDIT_WIDTH-len(str(test_stripe)))
+    s.addstr(12,COL_D_0,"F: Stripe:")
+    s.addstr(12,COL_D_1,f"{test_stripe}"+fill,c.color_pair(OTHER_BTN))
+    s.addstr(14,COL_D_0,f"Limited DR Test: {test_ldr}")
+    fill=' '*(EDIT_WIDTH-len(str(test_effect)))
+    s.addstr(15,COL_D_0,"G: Effect:")
+    s.addstr(15,COL_D_1,f"{test_effect}"+fill,c.color_pair(OTHER_BTN))
+    fill=' '*(EDIT_WIDTH-len(str(test_limit)))
+    s.addstr(16,COL_D_0,"H: Limit:")
+    s.addstr(16,COL_D_1,f"{test_limit}"+fill,c.color_pair(OTHER_BTN))
+
+
 
     if esprima_absent:
-        s.addstr(8,11,"WARNING! esprima package is absent! No parsing available.",c.color_pair(ATTENTION))
+        s.addstr(8,COL_D_0,"WARNING! esprima package is absent! No parsing available.",c.color_pair(ATTENTION))
+
+def textpad(s,y,x,width):
+    tabs.active=M_EDIT
+    tabs.show_footer(s)
+    tabs.active=M_WORKSHOP
+    s.keypad(1)
+    s.refresh()
+    c.curs_set(1)
+    win = c.newwin(1,width,y,x)
+    tb = c.textpad.Textbox(win)
+    text = tb.edit(utils.edit_keys)
+    c.curs_set(0)
+    del win
+    if utils.user_cancel:
+        utils.user_cancel=False
+    else:
+        return text
+
 
 def react(s,ch,m,alt_ch):
     global folder
+    global test_value
+    global test_stripe
+    global test_effect
+    global test_limit
     key=""
     key=c.keyname(ch).decode("utf-8")
     key=key.upper()
@@ -324,7 +370,52 @@ def react(s,ch,m,alt_ch):
         parse_db(s)
         utils.show_message("Parse completed. Please restart.")
         return M_BONFIRE
-    #if letter=="C":#for debugging
-        #get_groups()
-        #return M_DATABASE
+    if letter=="D":
+        s.clear()
+        s.addstr("TESTING KEYS. ^Q TO EXIT.\n")
+        while True:
+            ch=s.getch()
+            st=c.keyname(ch).decode("utf8")
+            s.addstr("KEY:"+st+"|")
+            if st=="^Q":
+                return M_DATABASE
+
+    if letter=="E":
+        text=textpad(s,11,COL_D_1,EDIT_WIDTH)
+        if len(text)>0:
+            try:
+                val=pure_math.parse_num(text.strip())
+            except:
+                utils.show_message("Invalid input!")
+                val=0
+            test_value=val
+    if letter=="F":
+        text=textpad(s,12,COL_D_1,EDIT_WIDTH)
+        if len(text)>0:
+            try:
+                val=pure_math.parse_num(text.strip())
+            except:
+                utils.show_message("Invalid input!")
+                val=0
+            test_stripe=val
+    if letter=="G":
+        text=textpad(s,15,COL_D_1,EDIT_WIDTH)
+        if len(text)>0:
+            try:
+                val=pure_math.parse_num(text.strip())
+            except:
+                utils.show_message("Invalid input!")
+                val=0
+            test_effect=val
+    if letter=="H":
+        text=textpad(s,16,COL_D_1,EDIT_WIDTH)
+        if len(text)>0:
+            try:
+                val=pure_math.parse_num(text.strip())
+            except:
+                utils.show_message("Invalid input!")
+                val=0
+            test_limit=val
+
+
     return M_DATABASE

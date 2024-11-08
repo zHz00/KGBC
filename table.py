@@ -342,10 +342,10 @@ def react(s,ch,m,alt_ch):
                 table_start=0
     if key=="KEY_DOWN":
         move_down()
-    if key=="KEY_HOME":
+    if key=="KEY_HOME" or alt_ch=="[H" or alt_ch=="[1~":
         table_start=0
         table_cursor=0
-    if key=="KEY_END":
+    if key=="KEY_END" or key=="KEY_A1" or alt_ch=="[4~":
         table_start+=TABLE_MAX*5#100 by default
     if key=="KEY_IC":#insert
         if table_sel_b==-1:#no selection
@@ -388,7 +388,7 @@ def react(s,ch,m,alt_ch):
             float_mode=FLOAT_SCI
         else:
             float_mode=FLOAT_KG
-    if letter=='[' and ctrl==True:
+    if (letter=='[' and ctrl==True) or key=="KEY_BACKSPACE" or key=="^H":
         return tabs.get_tab(bs.b_selected)
     if (letter=="[" and ctrl==False) or letter=="]":
         if table_sel_b==-1 or (table_sel_b!=-1 and table_sel_e!=-1):#selection had zero or two coordinates: resetting
@@ -396,7 +396,7 @@ def react(s,ch,m,alt_ch):
             table_sel_e=-1
         else:
             table_sel_e=table_cursor+table_start
-    if letter=="-" or key=="PADMINUS":
+    if letter=="-" or key=="PADMINUS" or key=="kpSUB":
         table_sel_b=-1
         table_sel_e=-1
     return M_TABLE

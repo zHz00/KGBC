@@ -10,7 +10,10 @@ def get_limited_dr(effect,limit):
     d=0.25*limit
     u=0.75*limit
 
-    effect_dr=u+d*(1-d/(abs(effect)-u+d))
+    try:
+        effect_dr=u+d*(1-d/(abs(effect)-u+d))
+    except:
+        return math.nan
     if effect>0:
         return effect_dr
     else:
@@ -21,7 +24,10 @@ def get_unlimited_dr(value, stripe):
     try:
         result = (math.sqrt(1 + (value / stripe) * 8) - 1) / 2
     except:
-        result= math.sqrt(value) / math.sqrt(stripe) * math.sqrt(2)
+        try:
+            result= math.sqrt(value) / math.sqrt(stripe) * math.sqrt(2)
+        except:
+            result=math.nan
     return result
 
 def format_num(real:float,mode,fill=True) -> str:

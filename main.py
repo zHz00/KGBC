@@ -168,8 +168,14 @@ def main(s):
             max_r=len(b["Recipe"])
     #max recipe len == 6, for moon base and lunar outpost
 
-    discounts.settings=tests.load_tests(discounts.SETTINGS_FILE)
-    discounts.load_settings(discounts.settings[0])
+    try:
+        discounts.settings=tests.load_tests(discounts.SETTINGS_FILE)
+        discounts.load_settings(discounts.settings[0])
+    except FileNotFoundError:
+        discounts.settings=tests.load_tests(discounts.SETTINGS_FILE_DEFAULT)
+        discounts.load_settings(discounts.settings[0])
+        discounts.save_settings()
+
 
     c.raw()
     c.mousemask(-1)
@@ -242,6 +248,9 @@ def main(s):
         if ch==27:
             s.nodelay(True)
             alt_ch=s.getch()
+            if alt_ch=="[":#home and end keys
+                for i in range(2):
+                    alt_ch+=s.getch()
             s.nodelay(False)
         restore_size()
         tabs.active=react_key(s,tabs.active,ch,alt_ch)

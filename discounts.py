@@ -29,6 +29,7 @@ challenge_1k=0
 
 settings=dict()
 SETTINGS_FILE="kgbc_settings.txt"
+SETTINGS_FILE_DEFAULT="kgbc_settings_default.txt"
 
 space_oil_list=["Satellite","Space St.","Lunar Outpost","Moon Base"]
 
