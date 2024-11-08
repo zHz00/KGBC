@@ -254,7 +254,9 @@ def main(s):
                 alt_ch=""
             if alt_ch=="[":#home and end keys
                 for i in range(2):
-                    alt_ch+=c.keyname(s.getch()).decode("utf8")
+                    next_key=s.getch()
+                    if next_key!=-1:
+                        alt_ch+=c.keyname(next_key).decode("utf8")
             s.nodelay(False)
         restore_size()
         tabs.active=react_key(s,tabs.active,ch,alt_ch)
