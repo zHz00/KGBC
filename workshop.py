@@ -127,20 +127,8 @@ def react(s,ch,m,alt_ch):
         discounts.monrachy=1 if discounts.monrachy==0 else 0
         return M_WORKSHOP
     if option==2:
-        tabs.active=M_EDIT
-        tabs.show_footer(s)
-        tabs.active=M_WORKSHOP
-        s.keypad(1)
-        s.refresh()
-        c.curs_set(1)
-        win = c.newwin(1,COL_WIDTH,BLOCK_3+2, COL_1+CAP_LEN)
-        tb = c.textpad.Textbox(win)
-        text = tb.edit(utils.edit_keys)
-        c.curs_set(0)
-        del win
-        if utils.user_cancel:
-            utils.user_cancel=False
-        else:
+        text=utils.textpad(s,BLOCK_3+2,COL_1+CAP_LEN,COL_WIDTH)
+        if len(text)>0:
             try:
                 val=pure_math.parse_num(text.strip())
                 if val<0:
@@ -150,20 +138,8 @@ def react(s,ch,m,alt_ch):
             except:
                 utils.show_message("Invalid input!")
     if option==3:
-        tabs.active=M_EDIT
-        tabs.show_footer(s)
-        tabs.active=M_WORKSHOP
-        s.keypad(1)
-        s.refresh()
-        c.curs_set(1)
-        win = c.newwin(1,COL_WIDTH,BLOCK_3+3, COL_1+CAP_LEN)
-        tb = c.textpad.Textbox(win)
-        text = tb.edit(utils.edit_keys)
-        c.curs_set(0)
-        del win
-        if utils.user_cancel:
-            utils.user_cancel=False
-        else:
+        text=utils.textpad(s,BLOCK_3+3,COL_1+CAP_LEN,COL_WIDTH)
+        if len(text)>0:
             try:
                 val=pure_math.parse_num(text.strip())
                 if val<0:
@@ -175,20 +151,8 @@ def react(s,ch,m,alt_ch):
 
         return M_WORKSHOP
     if option==4:
-        tabs.active=M_EDIT
-        tabs.show_footer(s)
-        tabs.active=M_WORKSHOP
-        s.keypad(1)
-        s.refresh()
-        c.curs_set(1)
-        win = c.newwin(1,COL_WIDTH,BLOCK_3+4, COL_1+CAP_LEN)
-        tb = c.textpad.Textbox(win)
-        text = tb.edit(utils.edit_keys)
-        c.curs_set(0)
-        del win
-        if utils.user_cancel:
-            utils.user_cancel=False
-        else:
+        text=utils.textpad(s,BLOCK_3+4,COL_1+CAP_LEN,COL_WIDTH)
+        if len(text)>0:
             try:
                 val=pure_math.parse_num(text.strip())
                 if val<0:

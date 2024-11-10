@@ -264,44 +264,26 @@ def show(s):
     s.addstr(5,COL_D_0,"B: Folder with KG sources:")
     s.addstr(6,COL_D_0,folder+fill,c.color_pair(OTHER_BTN))
     s.addstr(7,COL_D_0,"C: Rebuild database (old one will be preserved)")
-    s.addstr(8,COL_D_0,"D: Test keys")
-    s.addstr(10,COL_D_0,f"Unlimited DR Test: {test_udr}")
+    s.addstr(9,COL_D_0,"D: Test keys")
+    s.addstr(11,COL_D_0,f"Unlimited DR Test: {test_udr}")
     fill=' '*(EDIT_WIDTH-len(str(test_value)))
-    s.addstr(11,COL_D_0,"E: Value:")
-    s.addstr(11,COL_D_1,f"{test_value}"+fill,c.color_pair(OTHER_BTN))
+    s.addstr(12,COL_D_0,"E: Value:")
+    s.addstr(12,COL_D_1,f"{test_value}"+fill,c.color_pair(OTHER_BTN))
     fill=' '*(EDIT_WIDTH-len(str(test_stripe)))
-    s.addstr(12,COL_D_0,"F: Stripe:")
-    s.addstr(12,COL_D_1,f"{test_stripe}"+fill,c.color_pair(OTHER_BTN))
-    s.addstr(14,COL_D_0,f"Limited DR Test: {test_ldr}")
+    s.addstr(13,COL_D_0,"F: Stripe:")
+    s.addstr(13,COL_D_1,f"{test_stripe}"+fill,c.color_pair(OTHER_BTN))
+    s.addstr(15,COL_D_0,f"Limited DR Test: {test_ldr}")
     fill=' '*(EDIT_WIDTH-len(str(test_effect)))
-    s.addstr(15,COL_D_0,"G: Effect:")
-    s.addstr(15,COL_D_1,f"{test_effect}"+fill,c.color_pair(OTHER_BTN))
+    s.addstr(16,COL_D_0,"G: Effect:")
+    s.addstr(16,COL_D_1,f"{test_effect}"+fill,c.color_pair(OTHER_BTN))
     fill=' '*(EDIT_WIDTH-len(str(test_limit)))
-    s.addstr(16,COL_D_0,"H: Limit:")
-    s.addstr(16,COL_D_1,f"{test_limit}"+fill,c.color_pair(OTHER_BTN))
+    s.addstr(17,COL_D_0,"H: Limit:")
+    s.addstr(17,COL_D_1,f"{test_limit}"+fill,c.color_pair(OTHER_BTN))
 
 
 
     if esprima_absent:
         s.addstr(8,COL_D_0,"WARNING! esprima package is absent! No parsing available.",c.color_pair(ATTENTION))
-
-def textpad(s,y,x,width):
-    tabs.active=M_EDIT
-    tabs.show_footer(s)
-    tabs.active=M_WORKSHOP
-    s.keypad(1)
-    s.refresh()
-    c.curs_set(1)
-    win = c.newwin(1,width,y,x)
-    tb = c.textpad.Textbox(win)
-    text = tb.edit(utils.edit_keys)
-    c.curs_set(0)
-    del win
-    if utils.user_cancel:
-        utils.user_cancel=False
-    else:
-        return text
-
 
 def react(s,ch,m,alt_ch):
     global folder
@@ -377,11 +359,14 @@ def react(s,ch,m,alt_ch):
             ch=s.getch()
             st=c.keyname(ch).decode("utf8")
             s.addstr("KEY:"+st+"|")
+            if st=="KEY_MOUSE":
+                m=c.getmouse()
+                s.addstr(f"MOUSE:0[{m[0]}],1[{m[1]}],2[{m[2]}],3[{m[3]}],4[{m[4]}]|")
             if st=="^Q":
                 return M_DATABASE
 
     if letter=="E":
-        text=textpad(s,11,COL_D_1,EDIT_WIDTH)
+        text=utils.textpad(s,12,COL_D_1,EDIT_WIDTH)
         if len(text)>0:
             try:
                 val=pure_math.parse_num(text.strip())
@@ -390,7 +375,7 @@ def react(s,ch,m,alt_ch):
                 val=0
             test_value=val
     if letter=="F":
-        text=textpad(s,12,COL_D_1,EDIT_WIDTH)
+        text=utils.textpad(s,13,COL_D_1,EDIT_WIDTH)
         if len(text)>0:
             try:
                 val=pure_math.parse_num(text.strip())
@@ -399,7 +384,7 @@ def react(s,ch,m,alt_ch):
                 val=0
             test_stripe=val
     if letter=="G":
-        text=textpad(s,15,COL_D_1,EDIT_WIDTH)
+        text=utils.textpad(s,16,COL_D_1,EDIT_WIDTH)
         if len(text)>0:
             try:
                 val=pure_math.parse_num(text.strip())
@@ -408,7 +393,7 @@ def react(s,ch,m,alt_ch):
                 val=0
             test_effect=val
     if letter=="H":
-        text=textpad(s,16,COL_D_1,EDIT_WIDTH)
+        text=utils.textpad(s,17,COL_D_1,EDIT_WIDTH)
         if len(text)>0:
             try:
                 val=pure_math.parse_num(text.strip())

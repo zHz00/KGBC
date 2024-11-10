@@ -7,6 +7,7 @@ view prices for any number of buildings until overflow
 F1           Show help
 F10          Exit
 Esc          Return to previous tab
+Backspace    Return to previous tab
 
 Up           Move cursor one line up
 Down         Move cursor one line down

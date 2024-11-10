@@ -167,6 +167,10 @@ def main(s):
         if len(b["Recipe"])>max_r:
             max_r=len(b["Recipe"])
     #max recipe len == 6, for moon base and lunar outpost
+    if c.COLORS<16:
+        b=0#brighness bit
+    else:
+        b=8
 
     try:
         discounts.settings=tests.load_tests(discounts.SETTINGS_FILE)
@@ -174,6 +178,9 @@ def main(s):
     except FileNotFoundError:
         discounts.settings=tests.load_tests(discounts.SETTINGS_FILE_DEFAULT)
         discounts.load_settings(discounts.settings[0])
+        if b==0:#8-color mode
+            discounts.theme=1#more pretty theme for this mode
+        discounts.update_settings()
         discounts.save_settings()
 
 
@@ -182,18 +189,11 @@ def main(s):
     c.mouseinterval(0)
     c.curs_set(0)
     ec=c.can_change_color()
-    v=pure_math.get_unlimited_dr(52,100)
     s.clear()
-    #s.addstr(f"unlimited dr:{v}\n")
-    #s.refresh()
-    #s.getch()
     #for i in range(0, curses.COLORS):
         #s.addstr(f"Color pair: {i};")
         #c.init_pair(i+1, i, c.COLOR_BLUE)
-    if c.COLORS<16:
-        b=0#brighness bit
-    else:
-        b=8
+
     c.init_pair(ODD_BTN, themes[discounts.theme][0],themes[discounts.theme][1])
     c.init_pair(EVEN_BTN, themes[discounts.theme][2],themes[discounts.theme][3])
     c.init_pair(OTHER_BTN, c.COLOR_BLACK,c.COLOR_WHITE)

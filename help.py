@@ -132,9 +132,9 @@ def react(s,ch,m,alt_ch):
     if key=="KEY_DOWN":
         if line<len(contents_lines)-PAGE_SIZE:
             line+=1
-    if key=="KEY_HOME":
+    if key=="KEY_HOME" or alt_ch=="[H" or alt_ch=="[1~":
         line=0
-    if key=="KEY_END":
+    if key=="KEY_END" or key=="KEY_A1" or alt_ch=="[4~":
         line=len(contents_lines)-PAGE_SIZE
     if key=="KEY_F(7)" and page==M_ABOUT:
         if discounts.show_disclaimer==1:

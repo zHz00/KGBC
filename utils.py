@@ -1,4 +1,7 @@
 import curses as c
+
+import tabs
+from constants import *
 def show_message(s,noans=False):
     W=60
     c.curs_set(0)
@@ -13,6 +16,25 @@ def show_message(s,noans=False):
     if noans==False:
         w.getch()
     del w
+
+def textpad(s,y,x,width):
+    global user_cancel
+    tabs.active=M_EDIT
+    tabs.show_footer(s)
+    tabs.active=M_WORKSHOP
+    s.keypad(1)
+    s.refresh()
+    c.curs_set(1)
+    win = c.newwin(1,width,y,x)
+    tb = c.textpad.Textbox(win)
+    text = tb.edit(edit_keys)
+    c.curs_set(0)
+    del win
+    if user_cancel:
+        user_cancel=False
+        return ""
+    else:
+        return text
 
 user_cancel=False#there is no way to distinguish Esc from Enter after curses.TextBox.edit(), so i use global variable
 def edit_keys(key):
