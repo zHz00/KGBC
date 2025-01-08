@@ -19,13 +19,17 @@ def show(s):
             if b["Category"]!="Buildings":
                 continue
             if cur_b%2==0:
+                if chr(65+letter_counter_l)=="M":
+                    letter_counter_l+=1#skipping Ctrl+M, which cannot be catched in Linux terminal
+                if chr(65+letter_counter_l)=="J":
+                    letter_counter_l+=1#skipping Ctrl+J; it can be catched in Linux terminal, but this is in case of some terminal sending Ctrl+M instead of Ctrl+J
                 letter_counter_cur=letter_counter_l
                 letter_counter_l+=1
             else:
                 letter_counter_cur=letter_counter_r
                 letter_counter_r+=1
-            b["Letter"]=chr(65+letter_counter_cur)
             b["Side"]= (cur_b%2==0)
+            b["Letter"]=chr(65+letter_counter_cur)
             if b["Upgradable"]==0:
                 (y,x)=tabs.gen_coord((cur_b%2)*2,cur_b//2)
                 cur_b+=1

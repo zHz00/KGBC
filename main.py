@@ -2,6 +2,7 @@ import sqlite3 as sl
 import curses as c
 import curses.textpad
 import ast
+import os
 
 import table
 from constants import *
@@ -91,7 +92,7 @@ def react_key(s,mode,ch,alt_ch):
                 else:
                     return M_EXIT
 
-    if letter=='I' and ctrl==True and mode!=M_TABLE:#Tab
+    if key=="KEY_F(2)" and mode!=M_TABLE:#change theme
         discounts.theme=(discounts.theme+1)%(len(themes))
         c.init_pair(ODD_BTN, themes[discounts.theme][0],themes[discounts.theme][1])
         c.init_pair(EVEN_BTN, themes[discounts.theme][2],themes[discounts.theme][3])
@@ -143,6 +144,8 @@ def restore_size():
             exit(1)
 
 def main(s):
+    os.environ.setdefault('ESCDELAY', '25')
+
     db_link=sl.connect(KG_DB_FILE)
     db_link.row_factory = sl.Row
     db_cursor=db_link.cursor()
