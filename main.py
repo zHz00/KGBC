@@ -144,8 +144,6 @@ def restore_size():
             exit(1)
 
 def main(s):
-    os.environ.setdefault('ESCDELAY', '25')
-
     db_link=sl.connect(KG_DB_FILE)
     db_link.row_factory = sl.Row
     db_cursor=db_link.cursor()
@@ -274,4 +272,5 @@ def main(s):
  
 
 
+os.environ.setdefault('ESCDELAY', '25')
 c.wrapper(main)
