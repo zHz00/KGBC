@@ -10,7 +10,7 @@ Alt+Letter   Select building from right two columns
 
 Upgraded buildings are located in 2nd ant 4th columns.
 
-Tab          Change color scheme
+F2           Change color scheme
 1..8         Switch tab
 0            Hidden tab (tests and database rebuilding)
 

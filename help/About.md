@@ -1,4 +1,4 @@
-      **=== Kittens Game Buildings Calculator ===**      
+   **=== Kittens Game Buildings Calculator v1.0 ===**    
 
 *Beware!* Proceeding with using this application will
 lead you to *heavy spoilers* from **Kittens Game**.
@@ -7,7 +7,7 @@ If you don't want this to happen, close it *immediately*.
 
 To proceed, press _F4_.
 
-Copyright (C) 2024 zHz
+Copyright (C) 2024-2025 zHz
 
 Permission is hereby granted, free of charge, to any 
 person obtaining a copy of this software and associated

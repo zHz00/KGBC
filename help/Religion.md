@@ -9,7 +9,7 @@ F1           Show help
 F10          Exit
 Letter or [  Select building
 
-Tab          Change color scheme
+F2           Change color scheme
 1..8         Switch tab
 
 #=== MOUSE ===
