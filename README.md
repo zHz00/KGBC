@@ -41,6 +41,7 @@ You can scroll it, or you can use [ and ] keys to select several buildings (only
 - windows-curses for Windows. Linux already have curses package preinstalled.
 - esprima (optional). If you don't have that, you can use program as normal, but database rebuilding will be disabled (this is a debug feature though).
 - It works on terminals of size 80x25 or greater. 80x24 is insufficient!
+- Your terminal emulator must send Alt+ combinations as "ALT_*", "M_*" or escape sequences. For example, xterm must be run as xterm -xrm 'XTerm.vt100.metaSendsEscape: true'
 
 Program have PyInstaller binaries, so you can just download it and run.
 

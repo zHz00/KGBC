@@ -38,10 +38,7 @@ def save_tests(file:str,t_list)->None:
 
 
 def load_tests(file:str)->None:
-    try:
-        f=open(file,"r",encoding="utf-8")
-    except:
-        return [kg_defaults]
+    f=open(file,"r",encoding="utf-8")
         
     tests_list_raw=None
     tests_list_raw=json.load(f)

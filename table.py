@@ -308,7 +308,7 @@ def react(s,ch,m,alt_ch):
         if y_mouse<3 and m[4]&c.BUTTON1_PRESSED:
             table_sel_b=-1
             table_sel_e=-1
-        if y_mouse-3<TABLE_MAX and y_mouse>=3 and (m[4]&c.BUTTON1_DOUBLE_CLICKED or m[4]&c.BUTTON2_PRESSED):
+        if y_mouse-3<TABLE_MAX and y_mouse>=3 and (m[4]&c.BUTTON1_DOUBLE_CLICKED or m[4]&c.BUTTON2_PRESSED or m[4]&0x10000000):
             if table_sel_b==-1 or (table_sel_b!=-1 and table_sel_e!=-1):#selection had zero or two coordinates: resetting
                 table_cursor=y_mouse-3
                 table_sel_b=(y_mouse-3)+table_start

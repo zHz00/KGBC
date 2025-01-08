@@ -143,7 +143,7 @@ def react(s,ch,m,alt_ch):
             discounts.show_disclaimer=1
         discounts.update_settings()
         discounts.save_settings()
-    if (ch==27 and page!=M_ABOUT) or (key=="KEY_F(4)" and page==M_ABOUT):
+    if (ch==27 and page!=M_ABOUT and alt_ch=="") or (key=="KEY_F(4)" and page==M_ABOUT):
         line=-1
         del w
         w=None
