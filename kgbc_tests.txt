@@ -565,8 +565,8 @@
   },
   {
     "name": "Data Center",
-    "i": 21,
-    "idx": 1,
+    "i": 20,
+    "idx": 4,
     "huts_idx": 4,
     "active": [
       0,
@@ -574,14 +574,15 @@
       1,
       1
     ],
-    "philosopher": 1,
+    "philosopher": 0,
     "monarchy": 1,
-    "bparagon": 100000,
+    "bparagon": 0,
     "elevators": 35,
     "challenge_1k": 0,
     "result": [
-      1566.7578453914662,
-      156.6757845391466
+      521.112,
+      52.111,
+      26.056
     ],
     "show_disclaimer": 1,
     "passed": true
