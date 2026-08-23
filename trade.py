@@ -9,6 +9,8 @@ import buildings as bs
 def show(s):
     start_x=30
     cur_b=0
+    if bs.res_highlight!=-1:
+        s.addstr(1,0,"Highlight resource: "+bs.res_list[bs.res_highlight])
     s.addstr(2,start_x,"Embassies:")
     for b in bs.buildings:
         if b["Category"]!="Trade":
@@ -20,6 +22,10 @@ def show(s):
         x=start_x
         b["y"]=y
         b["x"]=x
+        if bs.res_highlight!=-1:
+            res=bs.res_list[bs.res_highlight]
+            if res in b["Recipe"]:
+                s.addstr(y,x-1,"*",c.A_BOLD)
         s.addstr(y,x,letter+":"+b["Name"]+filler,tabs.gen_attr(y,x))
         cur_b+=1
 

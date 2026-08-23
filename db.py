@@ -157,6 +157,10 @@ def parse_category(cat, planet_name, jsfile, cname,pname):
 
     for b in buildings_list:
         ratio=get_property_value(b,"priceRatio")
+        if cat=="Cryptotheology":
+            tt=get_property_value(b,"tier")
+        else:
+            tt=0
         if cat=="Trade":
             ratio=1.15
         if cat=="Buildings":
@@ -184,11 +188,11 @@ def parse_category(cat, planet_name, jsfile, cname,pname):
                 if(ratio_u=="NotFound"):
                     ratio_u=ratio
                 label_en=get_label(label)
-                kg_db.append([cat,planet_label_en,label_en,i+1,ratio_u,get_materials(s),name])
+                kg_db.append([cat,planet_label_en,label_en,i+1,ratio_u,get_materials(s),name,tt])
 
         else:
             label_en=get_label(label)
-            kg_db.append([cat,planet_label_en,label_en,upgradable,ratio,get_materials(b),name])
+            kg_db.append([cat,planet_label_en,label_en,upgradable,ratio,get_materials(b),name,tt])
 
 categories=[
     ["Trade","","diplomacy.js","classes.managers.DiplomacyManager","races"],
@@ -205,9 +209,9 @@ categories=[
 def insert_into_db(db_cursor,b):
     db_cursor.execute('''
     INSERT INTO BUILDINGS
-    (Category,Planet,Name,Upgradable,Ratio,GroupName,Recipe)
-    VALUES(?,?,?,?,?,?,?)''',
-    (b[0],b[1],b[2],b[3],0 if b[4]=="NotFound" else b[4],get_group_name(b[6]),str(b[5])))
+    (Category,Planet,Name,Upgradable,Ratio,GroupName,Recipe,TT)
+    VALUES(?,?,?,?,?,?,?,?)''',
+    (b[0],b[1],b[2],b[3],0 if b[4]=="NotFound" else b[4],get_group_name(b[6]),str(b[5]),b[7]))
 
 
 def parse_db(s):
@@ -225,7 +229,8 @@ def parse_db(s):
         Upgradable INTEGER,
         Ratio REAL,
         GroupName TEXT,
-        Recipe TEXT
+        Recipe TEXT,
+        TT TEXT
     )''')
 
     get_groups()

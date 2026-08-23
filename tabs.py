@@ -3,6 +3,7 @@ import curses as c
 from constants import *
 import buildings as bs
 import discounts
+import res_sel
 
 headers=["Bonfire","Workshop","Trade","Religion","Space","Time"]
 modes=[M_BONFIRE,M_WORKSHOP,M_TRADE,M_RELIGION,M_SPACE,M_TIME]
@@ -37,9 +38,12 @@ def get_tab_name(tab):
 
 def show_header(s):
     s.clear()
+    active_tab=active
+    if active_tab==M_RESOURCE_SEL:
+        active_tab=res_sel.ret_mode
     for i in range(len(headers)):
         x=i*TAB_LEN
-        if modes[i]==active:
+        if modes[i]==active_tab:
             caption=f"{headers[i]}({modes[i]})"
             caption+=" "*(TAB_LEN-len(caption)-1)
             s.addstr(0,x,caption,c.color_pair(SEL_TAB))
@@ -49,7 +53,9 @@ def show_header(s):
             caption+=" "*(TAB_LEN-len(caption)-1)+"|"
             s.addstr(0,x,caption,c.color_pair(INACTIVE_TAB))
     s.chgat(c.color_pair(INACTIVE_TAB))
-    s.addstr(0,77,"[",c.color_pair(INACTIVE_TAB)|c.A_BOLD)
+    s.addstr(0,75,"[",c.color_pair(INACTIVE_TAB)|c.A_BOLD)
+    s.addstr(0,76,"R",c.color_pair(ATTENTION_INACTIVE)|c.A_BOLD)
+    s.addstr(0,77,"|",c.color_pair(INACTIVE_TAB)|c.A_BOLD)
     s.addstr(0,78,"X",c.color_pair(ATTENTION_INACTIVE))
     s.addstr(0,79,"]",c.color_pair(INACTIVE_TAB)|c.A_BOLD)
 
@@ -64,15 +70,17 @@ def show_footer(s):
     if active==M_TABLE:
         hint="F1:Help|F10:Exit|Esc:To "+get_tab_name(get_tab(bs.b_selected))+"|Up/Down:Scroll|[ and ]:Select|Tab:Format"
     if active==M_WORKSHOP:
-        hint="F1:Help|F10:Exit|Esc:To Bonfire|1..8:Select tab|Letters:Select option"
+        hint="F1:Help|F10:Exit|Esc:To Bonfire|1..8:Tab|Letters:Select option"
     if active==M_BONFIRE:
-        hint="F1:Help|F10:Exit|1..8:Select tab|Ctrl or Alt+Letter:Select building|F2:Theme"
+        hint="F1:Help|F10:Exit|1..8:Tab|Ctrl/Alt+Letter:Building|F2:Theme|F3:Resource list"
     if active in [M_RELIGION,M_SPACE,M_TIME,M_TRADE]:
-        hint="F1:Help|F10:Exit|1..8:Select tab|Letters:Select building|F2:Theme"
+        hint="F1:Help|F10:Exit|1..8:Tab|Letters:Building|F2:Theme|F3:Resource list"
     if active==M_HIDDEN_TEST:
         hint="No Help|F10:Exit|Space:Next page|Esc:Abort"
     if active==M_DATABASE:
         hint="No Help|F10:Exit|A..H:Options|Esc:Cancel"
+    if active==M_RESOURCE_SEL:
+        hint="Up/Down:Scroll|Esc:Cancel|Enter:Accept"
     s.move(24,0)
     key=True
     for ch in hint:
@@ -88,7 +96,7 @@ def show_footer(s):
                 s.addstr(ch,c.color_pair(INACTIVE_TAB))
     s.clrtoeol()
     s.chgat(c.color_pair(INACTIVE_TAB))
-    s.refresh()
+    #s.refresh()
 
 
 def gen_attr(y,x):

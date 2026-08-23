@@ -5,12 +5,15 @@ import tabs
 import discounts
 import table
 import buildings as bs
+import res_sel
 
 
 def show(s):
     cur_b=0
     letter_counter_l=0
     letter_counter_r=0
+    if bs.res_highlight!=-1:
+        s.addstr(1,0,"Highlight resource: "+bs.res_list[bs.res_highlight])
     (y,x)=tabs.gen_coord(0,0)
     s.addstr(y-1,x,"CTRL+",c.color_pair(ATTENTION))
     (y,x)=tabs.gen_coord(2,0)
@@ -52,11 +55,15 @@ def show(s):
                 postfix="[Lib]"
             full_title=prefix+b["Name"]+postfix
             filler=(BUTTON_LEN-len(full_title)-2)*" "
+            if bs.res_highlight!=-1:
+                res=bs.res_list[bs.res_highlight]
+                if res in b["Recipe"]:
+                    s.addstr(y,x-1,"*",c.A_BOLD)
             s.addstr(y,x,letter+":"+full_title+filler,tabs.gen_attr(y,x))
 
     (y,x)=tabs.gen_coord(2,0)
     s.addstr(23,x,f"Global discount: {round(discounts.global_values[discounts.global_idx],3)}%")
-    s.refresh()
+    #s.refresh()
 
 def react(s,ch,m,alt_ch):
     key=""

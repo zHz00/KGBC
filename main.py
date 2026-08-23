@@ -21,6 +21,8 @@ import help
 import db
 import pure_math
 import utils
+import magneto_sw
+import res_sel
 
 themes=[]
 themes.append([c.COLOR_WHITE,c.COLOR_CYAN,c.COLOR_CYAN,c.COLOR_WHITE])
@@ -56,7 +58,11 @@ def show_page(s,mode):
         help.show(s)
     if mode==M_DATABASE:
         db.show(s)
-    s.refresh()
+    if mode==M_MAGNETO_SW:
+        magneto_sw.show(s)
+    if mode==M_RESOURCE_SEL:
+        show_page(s,res_sel.ret_mode)
+        res_sel.show(s)
 
 def react_key(s,mode,ch,alt_ch):
     global theme_idx
@@ -87,6 +93,11 @@ def react_key(s,mode,ch,alt_ch):
         if m[4]&c.BUTTON1_PRESSED:
             if y_mouse==0 and (tabs.active not in [M_TABLE,M_HIDDEN_TEST]):
                 tab_idx=(x_mouse+1)//TAB_LEN
+                if x_mouse==78:
+                    return M_EXIT
+                if x_mouse==76:
+                    res_sel.ret_mode=mode
+                    return M_RESOURCE_SEL
                 if tab_idx < len(tabs.modes):
                     return tabs.modes[tab_idx]
                 else:
@@ -101,7 +112,7 @@ def react_key(s,mode,ch,alt_ch):
         return mode
 
     probably_tab_mode=ord(letter)-48
-    if probably_tab_mode in tabs.modes and mode not in [M_TABLE,M_HIDDEN_TEST,M_HELP,M_ABOUT]:
+    if probably_tab_mode in tabs.modes and mode not in [M_TABLE,M_HIDDEN_TEST,M_HELP,M_ABOUT,M_RESOURCE_SEL]:
         return probably_tab_mode
     if probably_tab_mode==0:
         return M_DATABASE
@@ -112,6 +123,9 @@ def react_key(s,mode,ch,alt_ch):
         help.page=M_ABOUT
         help.line=-1
         return M_ABOUT
+    if key=="KEY_F(3)":
+        res_sel.ret_mode=mode
+        return M_RESOURCE_SEL
     if mode==M_BONFIRE:
         return bonfire.react(s,ch,m,alt_ch)
     if mode==M_SPACE:
@@ -132,6 +146,10 @@ def react_key(s,mode,ch,alt_ch):
         return help.react(s,ch,m,alt_ch)
     if mode==M_DATABASE:
         return db.react(s,ch,m,alt_ch)
+    if mode==M_MAGNETO_SW:
+        return magneto_sw.react(s,ch,m,alt_ch)
+    if mode==M_RESOURCE_SEL:
+        return res_sel.react(s,ch,m,alt_ch)
 
 def restore_size():
     c.update_lines_cols()
@@ -151,7 +169,7 @@ def main(s):
     fetch=db_cursor.fetchall()
     buildings_tmp=[]
     for b in fetch:
-        buildings_tmp.append({"Category":b["Category"],"Planet":b["Planet"],"Name":b["Name"],"Upgradable":b["Upgradable"],"Ratio":b["Ratio"],"GroupName":b["GroupName"],"Recipe":ast.literal_eval(b["Recipe"])})
+        buildings_tmp.append({"Category":b["Category"],"Planet":b["Planet"],"Name":b["Name"],"Upgradable":b["Upgradable"],"Ratio":b["Ratio"],"GroupName":b["GroupName"],"Recipe":ast.literal_eval(b["Recipe"]),"TT":b["TT"]})
         if b["GroupName"] not in bs.groups:
             bs.groups.append(b["GroupName"])
 
@@ -167,6 +185,10 @@ def main(s):
     for b in bs.buildings:
         if len(b["Recipe"])>max_r:
             max_r=len(b["Recipe"])
+        for r in b["Recipe"].keys():
+            if r not in bs.res_list:
+                bs.res_list.append(r)
+        bs.res_list.sort()
     #max recipe len == 6, for moon base and lunar outpost
     if c.COLORS<16:
         b=0#brighness bit
@@ -244,6 +266,7 @@ def main(s):
 
         show_page(s,tabs.active)
         tabs.show_footer(s)
+        s.refresh()
         ch=s.getch()
         alt_ch=""
         if ch==27:

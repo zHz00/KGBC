@@ -11,6 +11,8 @@ def show(s):
     cur_b=0
     planet=""
     space_oil=0
+    if bs.res_highlight!=-1:
+        s.addstr(1,0,"Highlight resource: "+bs.res_list[bs.res_highlight])
     for b in bs.buildings:
             if b["Category"]!="Space":
                 continue
@@ -28,6 +30,10 @@ def show(s):
             if(b["Planet"]!=planet):
                 planet=b["Planet"]
                 s.addstr(y,15,b["Planet"]+":")
+            if bs.res_highlight!=-1:
+                res=bs.res_list[bs.res_highlight]
+                if res in b["Recipe"]:
+                    s.addstr(y,x-1,"*",c.A_BOLD)
             s.addstr(y,x,letter+":"+b["Name"]+filler,tabs.gen_attr(y,x))
             if b["Name"] in discounts.space_oil_list:
                 s.addstr(" |",c.A_BOLD)

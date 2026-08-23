@@ -9,6 +9,8 @@ import table
 def show(s):
     cur_b=0
     cur_str=0
+    if bs.res_highlight!=-1:
+        s.addstr(1,0,"Highlight resource: "+bs.res_list[bs.res_highlight])
     s.addstr(3,COL_R_0,"Ziggurats:")
     for b in bs.buildings:
         if b["Category"]!="Ziggurats":
@@ -20,6 +22,10 @@ def show(s):
         x=COL_R_0
         b["y"]=y
         b["x"]=x
+        if bs.res_highlight!=-1:
+            res=bs.res_list[bs.res_highlight]
+            if res in b["Recipe"]:
+                s.addstr(y,x-1,"*",c.A_BOLD)
         s.addstr(y,x,letter+":"+b["Name"]+filler,tabs.gen_attr(y,x))
         cur_b+=1
         cur_str+=1
@@ -48,6 +54,10 @@ def show(s):
         x=COL_R_1
         b["y"]=y
         b["x"]=x
+        if bs.res_highlight!=-1:
+            res=bs.res_list[bs.res_highlight]
+            if res in b["Recipe"]:
+                s.addstr(y,x-1,"*",c.A_BOLD)
         s.addstr(y,x,letter+":"+b["Name"]+filler,tabs.gen_attr(y,x))
         cur_b+=1
         cur_str+=1
@@ -69,12 +79,17 @@ def show(s):
             continue
         letter=chr(65+cur_b)
         b["Letter"]=letter
-        filler=(BUTTON_LEN_L-len(b["Name"])-2)*" "
+        caption=f"[TT:{b['TT']:>2}]{b['Name']}"
+        filler=(BUTTON_LEN_L-len(caption)-2)*" "
         y=5+cur_str
         x=COL_R_2
         b["y"]=y
         b["x"]=x
-        s.addstr(y,x,letter+":"+b["Name"]+filler,tabs.gen_attr(y,x))
+        if bs.res_highlight!=-1:
+            res=bs.res_list[bs.res_highlight]
+            if res in b["Recipe"]:
+                s.addstr(y,x-1,"*",c.A_BOLD)
+        s.addstr(y,x,letter+":"+caption+filler,tabs.gen_attr(y,x))
         cur_b+=1
         cur_str+=1
 
