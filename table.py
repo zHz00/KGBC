@@ -134,7 +134,7 @@ def show(s,b):
     ratio_starchart=1.35*ratio
     (recipe,mul,mul_gold,mul_oil)=discounts.base_discount(b)
     name="=== "+b["Name"]+" ==="
-    space=" "*int((80-len(name))/2)
+    space=" "*int((GLOBAL_W-len(name))/2)
     info=space+name+space
     ratio_info=f"Ratio: {round(ratio,3)}"
     if discounts.get_discount(b)!=0:

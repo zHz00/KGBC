@@ -5,10 +5,12 @@ import tabs
 import discounts
 import table
 import buildings as bs
-import res_sel
 
+m_sw_calc_y=0
+m_sw_calc_x=0
 
 def show(s):
+    global m_sw_calc_y,m_sw_calc_x
     cur_b=0
     letter_counter_l=0
     letter_counter_r=0
@@ -60,6 +62,12 @@ def show(s):
                 if res in b["Recipe"]:
                     s.addstr(y,x-1,"*",c.A_BOLD)
             s.addstr(y,x,letter+":"+full_title+filler,tabs.gen_attr(y,x))
+            if b["Name"] == "Steamworks":
+                m_sw_calc_y=y
+                m_sw_calc_x=x+BUTTON_LEN+1
+                header="<=   F4:CALC   =>"
+                header=header+(BUTTON_LEN-len(header))*" "
+                s.addstr(y,x+BUTTON_LEN+1,header, tabs.gen_attr(y,x))
 
     (y,x)=tabs.gen_coord(2,0)
     s.addstr(23,x,f"Global discount: {round(discounts.global_values[discounts.global_idx],3)}%")
@@ -90,6 +98,8 @@ def react(s,ch,m,alt_ch):
     if m!=None:
         x_mouse=m[1]
         y_mouse=m[2]
+    if x_mouse>=m_sw_calc_x and x_mouse<=m_sw_calc_x+BUTTON_LEN-1 and y_mouse==m_sw_calc_y and m[4]&c.BUTTON1_PRESSED:
+        return M_SW_MAGNETO
     if x_mouse!=0 and y_mouse!=0 and m[4]&c.BUTTON1_PRESSED:
         for b in bs.buildings:
             if b["Category"]=="Buildings":

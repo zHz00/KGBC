@@ -54,7 +54,7 @@ def show_header(s):
             s.addstr(0,x,caption,c.color_pair(INACTIVE_TAB))
     s.chgat(c.color_pair(INACTIVE_TAB))
     s.addstr(0,75,"[",c.color_pair(INACTIVE_TAB)|c.A_BOLD)
-    s.addstr(0,76,"R",c.color_pair(ATTENTION_INACTIVE)|c.A_BOLD)
+    s.addstr(0,76,"R",c.color_pair(ATTENTION_INACTIVE))
     s.addstr(0,77,"|",c.color_pair(INACTIVE_TAB)|c.A_BOLD)
     s.addstr(0,78,"X",c.color_pair(ATTENTION_INACTIVE))
     s.addstr(0,79,"]",c.color_pair(INACTIVE_TAB)|c.A_BOLD)
@@ -81,6 +81,8 @@ def show_footer(s):
         hint="No Help|F10:Exit|A..H:Options|Esc:Cancel"
     if active==M_RESOURCE_SEL:
         hint="Up/Down:Scroll|Esc:Cancel|Enter:Accept"
+    if active==M_SW_MAGNETO:
+        hint="A/B:Set amount|C:Toggle policy|Esc:Back to bonfire"
     s.move(24,0)
     key=True
     for ch in hint:

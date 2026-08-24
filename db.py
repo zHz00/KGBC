@@ -360,6 +360,8 @@ def react(s,ch,m,alt_ch):
     if letter=="D":
         s.clear()
         s.addstr("TESTING KEYS. ^Q TO EXIT.\n")
+        (av,old)=c.mousemask(-1)
+        s.addstr(f"Old MM:{old}, Av:{av}\n")
         while True:
             ch=s.getch()
             st=c.keyname(ch).decode("utf8")

@@ -21,7 +21,7 @@ import help
 import db
 import pure_math
 import utils
-import magneto_sw
+import sw_magneto
 import res_sel
 
 themes=[]
@@ -58,8 +58,8 @@ def show_page(s,mode):
         help.show(s)
     if mode==M_DATABASE:
         db.show(s)
-    if mode==M_MAGNETO_SW:
-        magneto_sw.show(s)
+    if mode==M_SW_MAGNETO:
+        sw_magneto.show(s)
     if mode==M_RESOURCE_SEL:
         show_page(s,res_sel.ret_mode)
         res_sel.show(s)
@@ -91,7 +91,7 @@ def react_key(s,mode,ch,alt_ch):
         x_mouse=m[1]
         y_mouse=m[2]
         if m[4]&c.BUTTON1_PRESSED:
-            if y_mouse==0 and (tabs.active not in [M_TABLE,M_HIDDEN_TEST]):
+            if y_mouse==0 and (tabs.active not in [M_TABLE,M_HIDDEN_TEST,M_SW_MAGNETO]):
                 tab_idx=(x_mouse+1)//TAB_LEN
                 if x_mouse==78:
                     return M_EXIT
@@ -126,6 +126,8 @@ def react_key(s,mode,ch,alt_ch):
     if key=="KEY_F(3)":
         res_sel.ret_mode=mode
         return M_RESOURCE_SEL
+    if key=="KEY_F(4)":
+        return M_SW_MAGNETO
     if mode==M_BONFIRE:
         return bonfire.react(s,ch,m,alt_ch)
     if mode==M_SPACE:
@@ -146,8 +148,8 @@ def react_key(s,mode,ch,alt_ch):
         return help.react(s,ch,m,alt_ch)
     if mode==M_DATABASE:
         return db.react(s,ch,m,alt_ch)
-    if mode==M_MAGNETO_SW:
-        return magneto_sw.react(s,ch,m,alt_ch)
+    if mode==M_SW_MAGNETO:
+        return sw_magneto.react(s,ch,m,alt_ch)
     if mode==M_RESOURCE_SEL:
         return res_sel.react(s,ch,m,alt_ch)
 
@@ -261,7 +263,7 @@ def main(s):
 
     while True:
         restore_size()
-        if tabs.active not in [M_TABLE,M_HIDDEN_TEST,M_HELP,M_ABOUT]:
+        if tabs.active not in [M_TABLE,M_HIDDEN_TEST,M_HELP,M_ABOUT,M_SW_MAGNETO]:
             tabs.show_header(s)
 
         show_page(s,tabs.active)
